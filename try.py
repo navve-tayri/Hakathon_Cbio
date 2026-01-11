@@ -647,7 +647,7 @@ if __name__ == "__main__":
     train_labels = df_train["label_bin"].to_numpy()
 
     # שימוש ב-Youden למציאת הסף האופטימלי להפרש (Delta)
-    best_thr = choose_threshold(train_deltas, train_labels, method="means")
+    best_thr = choose_threshold(train_deltas, train_labels, method="youden")
     print(f"Optimal Delta Threshold: {best_thr:.4f}")
     print("(Sequences with Delta > Threshold will be predicted as Sick)")
 
