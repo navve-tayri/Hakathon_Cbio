@@ -607,7 +607,7 @@ if __name__ == "__main__":
     all_raw_scores = np.array(all_raw_scores)
     labels_all = df["label_bin"].astype(int).to_numpy()
 
-    # הדפסת ממוצעים לבדיקה )
+    # הדפסת ממוצעים לבדיקה (כפי שביקשת)
     mean_healthy = np.mean(all_raw_scores[labels_all == 0])
     mean_sick = np.mean(all_raw_scores[labels_all == 1])
 
