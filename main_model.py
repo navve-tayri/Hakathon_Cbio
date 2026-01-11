@@ -41,6 +41,8 @@ from Bio import AlignIO
 
 import matplotlib.pyplot as plt
 
+from sklearn.metrics import roc_curve, auc
+
 from build_hmm import MSA_FILE
 
 # -----------------------------
@@ -721,13 +723,55 @@ class TP53VariantScorer:
 # -----------------------------
 # Main (example usage)
 # -----------------------------
+def calculate_and_plot_roc(scored_df):
+    """
+    Calculates AUC and plots ROC curve.
+    Assumes 'label_bin' is 0 for Benign, 1 for Pathogenic.
+    Assumes 'delta_score' is lower for Pathogenic (so we invert it for ROC).
+    """
+    # סינון שורות ללא סיווג
+    df = scored_df.dropna(subset=["delta_score", "label_bin"])
+
+    if df.empty:
+        print("Cannot calculate ROC: No valid labeled data.")
+        return
+
+    y_true = df["label_bin"]
+
+    # טריק חשוב: ב-ROC אנחנו רוצים שהערך הגבוה ינבא 1 (פתוגני).
+    # במודל שלנו, ציון *נמוך* (שלילי) אומר פתוגני.
+    # לכן אנחנו הופכים את הסימן (מינוס) כדי שציון "שלילי מאוד" יהפוך ל"חיובי גבוה".
+    y_scores = -df["delta_score"]
+
+    fpr, tpr, thresholds = roc_curve(y_true, y_scores)
+    roc_auc = auc(fpr, tpr)
+
+    print(f"\n>>> ROC AUC Score: {roc_auc:.3f} <<<")
+
+    # ציור הגרף
+    plt.figure(figsize=(6, 6))
+    plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (AUC = {roc_auc:.2f})')
+    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver Operating Characteristic (TP53)')
+    plt.legend(loc="lower right")
+    plt.grid(alpha=0.3)
+    plt.savefig("roc_curve.png", dpi=200)
+    plt.close()
+    print("Saved ROC plot: roc_curve.png")
+
+
 
 def main():
     # Update these paths as needed
-    MSA_FILE = "tp53_msa.fasta"
+    MSA_FILE = "tp53_30_msa.fasta"
     # Example: ClinVar-like CSV with columns: ProteinChange, ClinicalSignificance
     CLINVAR_CSV = "clinvar_tp53.txt"
 
+    # 1. בניית המודל
     scorer = TP53VariantScorer(MSA_FILE, gap_threshold=0.5, pseudocount=1.0).fit()
 
     # Example sanity check: score likelihood for the reference ungapped sequence
@@ -735,81 +779,85 @@ def main():
         ll = scorer.hmm.forward_log_likelihood(scorer.hmm.reference_ungapped)
         print(f"Forward log-likelihood of reference sequence: {ll:.2f}")
 
-    # If you have ClinVar data, score and optionally plot a histogram
-        if CLINVAR_CSV:
-            print(f"Loading ClinVar from {CLINVAR_CSV}...")
-            try:
-                # טעינה עם מפריד טאב (\t) כי זה הפורמט בקובץ שהעלית
-                df = pd.read_csv(CLINVAR_CSV, sep='\t')
-                print(f"Successfully loaded {len(df)} rows.")
+    # 2. טעינת ועיבוד ClinVar
+    if CLINVAR_CSV:
+        print(f"Loading ClinVar from {CLINVAR_CSV}...")
+        try:
+            # טעינה עם מפריד טאב (\t) כי זה הפורמט בקובץ שהעלית
+            df = pd.read_csv(CLINVAR_CSV, sep='\t')
+            print(f"Successfully loaded {len(df)} rows.")
 
-                # ניקוי שמות עמודות (להסרת רווחים אם יש)
-                df.columns = df.columns.str.strip()
+            # ניקוי שמות עמודות (להסרת רווחים אם יש)
+            df.columns = df.columns.str.strip()
 
-                # --- תיקון 1: חילוץ המוטציה מתוך עמודת Name ---
-                # הפורמט בקובץ הוא: "NM_000546.6(TP53):c.1177G>T (p.Asp393Tyr)"
-                # אנחנו צריכים את "p.Asp393Tyr"
-                def extract_hgvs_from_name(name_val):
-                    if not isinstance(name_val, str): return None
-                    # מחפש ביטוי שמתחיל ב-p. ואחריו אותיות ומספרים, אופציונלית בתוך סוגריים
-                    match = re.search(r"\(?(p\.[A-Za-z]+\d+[A-Za-z]+)\)?", name_val)
-                    if match:
-                        return match.group(1)  # מחזיר למשל p.Asp393Tyr
-                    return None
+            # --- תיקון 1: חילוץ המוטציה מתוך עמודת Name ---
+            def extract_hgvs_from_name(name_val):
+                if not isinstance(name_val, str): return None
+                # מחפש ביטוי שמתחיל ב-p. ואחריו אותיות ומספרים, אופציונלית בתוך סוגריים
+                match = re.search(r"\(?(p\.[A-Za-z]+\d+[A-Za-z]+)\)?", name_val)
+                if match:
+                    return match.group(1)  # מחזיר למשל p.Asp393Tyr
+                return None
 
-                if "Name" in df.columns:
-                    print("Extracting protein changes from 'Name' column...")
-                    df["extracted_pdot"] = df["Name"].apply(extract_hgvs_from_name)
-                else:
-                    print("Error: 'Name' column not found.")
-                    return
-
-                # --- תיקון 2: הגדרת עמודת הסיווג והערכים ---
-                # בקובץ שלך העמודה היא "Germline classification"
-                label_col = "Germline classification"
-                if label_col not in df.columns:
-                    print(f"Error: Column '{label_col}' not found. Available: {list(df.columns)}")
-                    return
-
-                # עדכון רשימת הערכים הפתוגניים (הקובץ מכיל גם שילובים)
-                pathogenic_labels = (
-                    "Pathogenic",
-                    "Likely pathogenic",
-                    "Pathogenic/Likely pathogenic",
-                    "Pathogenic/Likely pathogenic/Pathogenic, low penetrance"
-                )
-
-                # הרצת הסקור עם העמודות הנכונות
-                scored = scorer.score_variants_table(
-                    df,
-                    protein_change_col="extracted_pdot",  # העמודה החדשה שיצרנו
-                    label_col=label_col,
-                    pathogenic_labels=pathogenic_labels
-                )
-
-            except Exception as e:
-                print(f"Error processing ClinVar file: {e}")
-                import traceback
-                traceback.print_exc()
+            if "Name" in df.columns:
+                print("Extracting protein changes from 'Name' column...")
+                df["extracted_pdot"] = df["Name"].apply(extract_hgvs_from_name)
+            else:
+                print("Error: 'Name' column not found.")
                 return
-        scored = scorer.score_variants_table(df)
 
-        # simple plot of delta_score by label
-        plot_df = scored.dropna(subset=["delta_score", "label_bin"])
-        plt.figure(figsize=(8, 4))
-        plt.hist(plot_df.loc[plot_df["label_bin"] == 0, "delta_score"], bins=50, alpha=0.7, label="Benign")
-        plt.hist(plot_df.loc[plot_df["label_bin"] == 1, "delta_score"], bins=50, alpha=0.7, label="Pathogenic")
-        plt.title("Δ emission score distribution (mut vs wt at Match position)")
-        plt.xlabel("Δ score")
-        plt.ylabel("Count")
-        plt.legend()
-        plt.tight_layout()
-        plt.savefig("delta_score_hist.png", dpi=200)
-        plt.close()
-        print("Saved plot: delta_score_hist.png")
+            # --- תיקון 2: הגדרת עמודת הסיווג והערכים ---
+            label_col = "Germline classification"
+            if label_col not in df.columns:
+                print(f"Error: Column '{label_col}' not found. Available: {list(df.columns)}")
+                return
 
-        scored.to_csv("clinvar_scored.csv", index=False)
-        print("Saved table: clinvar_scored.csv")
+            # עדכון רשימת הערכים הפתוגניים
+            pathogenic_labels = (
+                "Pathogenic",
+                "Likely pathogenic",
+                "Pathogenic/Likely pathogenic",
+                "Pathogenic/Likely pathogenic/Pathogenic, low penetrance"
+            )
+
+            # הרצת הסקור - קריאה אחת בלבד עם הפרמטרים הנכונים
+            scored = scorer.score_variants_table(
+                df,
+                protein_change_col="extracted_pdot",
+                label_col=label_col,
+                pathogenic_labels=pathogenic_labels
+            )
+
+            # 3. יצירת הגרף ושמירה (בתוך ה-try כדי לוודא ש-scored קיים)
+            plot_df = scored.dropna(subset=["delta_score", "label_bin"])
+
+            if plot_df.empty:
+                print("Warning: No valid data points to plot.")
+            else:
+                plt.figure(figsize=(8, 4))
+                plt.hist(plot_df.loc[plot_df["label_bin"] == 0, "delta_score"], bins=50, alpha=0.7, label="Benign",
+                         color='green')
+                plt.hist(plot_df.loc[plot_df["label_bin"] == 1, "delta_score"], bins=50, alpha=0.7, label="Pathogenic",
+                         color='red')
+                plt.title("Δ emission score distribution (mut vs wt at Match position)")
+                plt.xlabel("Δ score")
+                plt.ylabel("Count")
+                plt.legend()
+                plt.tight_layout()
+                plt.savefig("delta_score_hist.png", dpi=200)
+                plt.close()
+                print("Saved plot: delta_score_hist.png")
+
+            calculate_and_plot_roc(scored)
+
+            scored.to_csv("clinvar_scored.csv", index=False)
+            print("Saved table: clinvar_scored.csv")
+
+        except Exception as e:
+            print(f"Error processing ClinVar file: {e}")
+            import traceback
+            traceback.print_exc()
+            return
 
 
 if __name__ == "__main__":
