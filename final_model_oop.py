@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 from sklearn.metrics import roc_curve, auc
 import re
+from Bio.SeqUtils import seq1
 
 # --- הגדרות ---
 # MSA_FILE = "tp53_msa.fasta"
@@ -248,11 +249,10 @@ for idx, row in df.iterrows():
         if not m: continue
 
         pos = int(m.group(2))
-        new_aa = (re.sub(r'([A-Z][a-z]+)', lambda x: x.group(0)[0], m.group(3)))[0]  # המרה זריזה
-        # המרה בטוחה יותר באמצעות Bio.SeqUtils אם צריך
-        from Bio.SeqUtils import seq1
 
-        new_aa = seq1(m.group(3))
+        # המרה מ-Arg ל-R
+        aa_3_letter = m.group(3)
+        new_aa = seq1(aa_3_letter)
 
         # --- כאן מתבצע החיזוי ---
         score = model.predict_score(pos, new_aa)
