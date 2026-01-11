@@ -5,7 +5,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # --- הגדרות ---
-MSA_FILE = "tp53_msa.fasta"
+# MSA_FILE = "tp53_msa.fasta"
+MSA_FILE = "tp53_30_msa.fasta"
+
 AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWY")  # 20 חומצות האמינו
 AA_TO_INDEX = {aa: i for i, aa in enumerate(AMINO_ACIDS)}
 
