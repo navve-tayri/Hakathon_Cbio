@@ -287,22 +287,386 @@ def viterbi_profile_hmm(states, T, E, alphabet, sequence):
     return best_logprob, path
 
 
+def clean_protein_sequence(seq: str, alphabet: dict) -> str:
+    """
+    מנקה רצף: מסיר רווחים/תווי שורה, הופך ל-Upper,
+    ומחליף תווים לא מוכרים ב-'X' אם קיים באלפבית, אחרת מסנן אותם.
+    """
+    s = str(seq).strip().upper().replace(" ", "").replace("\n", "").replace("\r", "")
+    allowed = set(alphabet.keys())
+
+    if "X" in allowed:
+        return "".join(ch if ch in allowed else "X" for ch in s)
+    else:
+        return "".join(ch for ch in s if ch in allowed)
+
+def score_sequence_viterbi(states, T, E, alphabet, seq: str) -> float:
+    """
+    מחזיר ציון Viterbi log-prob לרצף (ככל שגבוה יותר -> מתאים יותר למודל).
+    """
+    seq_clean = clean_protein_sequence(seq, alphabet)
+    if len(seq_clean) == 0:
+        return float("-inf")
+    best_ll, _ = viterbi_profile_hmm(states, T, E, alphabet, seq_clean)
+    return float(best_ll)
+
+
+def choose_threshold(scores: np.ndarray, labels: np.ndarray, method: str = "means") -> float:
+    """
+    labels: 0=בריא, 1=חולה
+    scores: log-likelihood (גבוה=יותר "דומה לחולה" לפי ההגדרה שנעשה בהמשך)
+
+    method:
+      - "means": threshold = (mean_healthy + mean_sick)/2
+      - "youden": threshold שממקסם Youden's J = TPR - FPR
+    """
+    scores = np.asarray(scores, dtype=float)
+    labels = np.asarray(labels, dtype=int)
+
+    s0 = scores[labels == 0]
+    s1 = scores[labels == 1]
+    if len(s0) == 0 or len(s1) == 0:
+        raise ValueError("צריך שיהיו גם בריאים (0) וגם חולים (1) כדי לקבוע threshold.")
+
+    if method == "means":
+        return 0.5 * (np.mean(s0) + np.mean(s1))
+
+    if method == "youden":
+        # סורקים מועמדים טבעיים: כל ערך ציון + מעט
+        uniq = np.unique(scores[~np.isinf(scores)])
+        if len(uniq) == 0:
+            return float("nan")
+
+        # מועמדים: midpoints בין ערכים עוקבים (סטנדרטי ל-ROC threshold)
+        candidates = []
+        candidates.append(uniq[0] - 1.0)
+        for a, b in zip(uniq[:-1], uniq[1:]):
+            candidates.append(0.5 * (a + b))
+        candidates.append(uniq[-1] + 1.0)
+
+        best_thr = candidates[0]
+        best_J = -1e18
+
+        P = np.sum(labels == 1)
+        N = np.sum(labels == 0)
+
+        for thr in candidates:
+            pred = (scores >= thr).astype(int)  # 1 אם מעל thr
+            TP = np.sum((pred == 1) & (labels == 1))
+            FP = np.sum((pred == 1) & (labels == 0))
+            TPR = TP / P if P else 0.0
+            FPR = FP / N if N else 0.0
+            J = TPR - FPR
+            if J > best_J:
+                best_J = J
+                best_thr = thr
+
+        return float(best_thr)
+
+    raise ValueError("method must be 'means' or 'youden'")
+
+
+
+def predict_health_label_from_score(score: float, threshold: float) -> int:
+    """
+    מחזיר 1=חולה אם score >= threshold, אחרת 0=בריא
+    """
+    return int(score >= threshold)
+
+
+def predict_sequence(states, T, E, alphabet, threshold: float, seq: str) -> dict:
+    """
+    API נוח: מחזיר score + label
+    """
+    s = score_sequence_viterbi(states, T, E, alphabet, seq)
+    y = predict_health_label_from_score(s, threshold)
+    return {"score": s, "pred_label": y}  # 0/1
+
+
+def evaluate_threshold(scores: np.ndarray, labels: np.ndarray, threshold: float) -> dict:
+    scores = np.asarray(scores, dtype=float)
+    labels = np.asarray(labels, dtype=int)
+    pred = (scores >= threshold).astype(int)
+
+    TP = np.sum((pred == 1) & (labels == 1))
+    TN = np.sum((pred == 0) & (labels == 0))
+    FP = np.sum((pred == 1) & (labels == 0))
+    FN = np.sum((pred == 0) & (labels == 1))
+
+    acc = (TP + TN) / max(1, (TP + TN + FP + FN))
+    prec = TP / max(1, (TP + FP))
+    rec = TP / max(1, (TP + FN))
+    f1 = 2 * prec * rec / max(1e-12, (prec + rec))
+
+    return {
+        "threshold": float(threshold),
+        "TP": int(TP), "TN": int(TN), "FP": int(FP), "FN": int(FN),
+        "accuracy": float(acc),
+        "precision": float(prec),
+        "recall": float(rec),
+        "f1": float(f1),
+    }
+
+
+from Bio import SeqIO
+
+def load_mutant_fasta(fasta_path: str):
+    """
+    Expects headers like:
+      >TP53_D234Y|label=Likely_benign
+    Returns list of (seq, y) where y in {0,1}
+    """
+    X = []
+    y = []
+    for rec in SeqIO.parse(fasta_path, "fasta"):
+        header = rec.description
+        seq = str(rec.seq).upper()
+
+        if "|label=" not in header:
+            continue
+        label_str = header.split("|label=", 1)[1].strip()
+
+        if label_str in {"Benign", "Likely_benign"}:
+            y.append(0)
+        elif label_str in {"Pathogenic", "Likely_pathogenic", "Pathogenic_or_Likely_pathogenic"}:
+            y.append(1)
+        else:
+            continue
+
+        X.append(seq)
+    return X, np.array(y, dtype=int)
+
+
+# if __name__ == "__main__":
+    # aln = AlignIO.read("tp53_msa.fasta", "fasta")
+    # alignment = [str(rec.seq).upper() for rec in aln]  # list[str]
+    #
+    # AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWYX")
+    # alphabet = {aa: i for i, aa in enumerate(AMINO_ACIDS)}
+    # theta = 0.35
+    #
+    # states, transition, emission = profileHMM(alignment, alphabet, theta)
+    # test_seq = alignment[0].replace("-", "")
+    # best_ll, v_path = viterbi_profile_hmm(states, transition, emission, alphabet, test_seq)
+    #
+    # print("\nStates:\n", states)
+    # print("\nTransition Matrix:\n", pd.DataFrame(transition, index=states, columns=states))
+    # print("\nEmission Matrix:\n", pd.DataFrame(emission, index=states, columns=list(alphabet.keys())))
+    # print("\nViterbi best log-likelihood:", best_ll)
+    # print("Viterbi path length:", len(v_path))
+    # print("First 50 states in path:", v_path[:50])
+
+#
+# if __name__ == "__main__":
+#     import pandas as pd
+#     import numpy as np
+#
+#     # ---------------------------------------------------------
+#     # 1) בניית המודל
+#     # ---------------------------------------------------------
+#     print("--- Step 1: Building Profile HMM ---")
+#     aln = AlignIO.read("tp53_msa.fasta", "fasta")
+#     alignment = [str(rec.seq).upper() for rec in aln]
+#
+#     AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWYX")
+#     alphabet = {aa: i for i, aa in enumerate(AMINO_ACIDS)}
+#     theta = 0.35
+#
+#     states, transition, emission = profileHMM(alignment, alphabet, theta)
+#     print(f"HMM Model built successfully ({len(states)} states).")
+#
+#     # ---------------------------------------------------------
+#     # 2) טעינת הנתונים
+#     # ---------------------------------------------------------
+#     print("\n--- Step 2: Loading Data ---")
+#     mutants_file = "mutants.fasta"
+#     try:
+#         X_seqs, y_labels = load_mutant_fasta(mutants_file)
+#     except FileNotFoundError:
+#         print(f"Error: '{mutants_file}' not found.")
+#         exit()
+#
+#     df = pd.DataFrame({"sequence": X_seqs, "label_bin": y_labels})
+#
+#     # מציאת רצף ה-WT מתוך הקובץ (לפי הכותרת או שהוא הראשון)
+#     # הנחה: הרצף הראשון בקובץ mutants.fasta הוא ה-WT (כך הקוד של חברה שלך בנוי)
+#     wt_seq = df.iloc[0]["sequence"]
+#     print(f"Identified WT sequence (length {len(wt_seq)})")
+#
+#     # חישוב ציון ה-WT פעם אחת
+#     wt_score = score_sequence_viterbi(states, transition, emission, alphabet, wt_seq)
+#     print(f"WT Log-Likelihood: {wt_score:.4f}")
+#
+#     # ערבוב
+#     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
+#
+#     # חלוקה 80/20
+#     split_idx = int(len(df) * 0.80)
+#     df_train = df.iloc[:split_idx].copy()
+#     df_test = df.iloc[split_idx:].copy()
+#
+#     # ---------------------------------------------------------
+#     # 3) חישוב ציוני Delta (השינוי הגדול!)
+#     # ---------------------------------------------------------
+#     print("\n--- Step 3: Calibrating with Delta Score ---")
+#
+#
+#     def get_delta_scores(sequences, wt_val):
+#         """
+#         מחשב: ציון_WT פחות ציון_מוטנט.
+#         ערך גבוה = המוטנט הרבה פחות סביר מה-WT = כנראה פתוגני.
+#         """
+#         raw_scores = np.array([
+#             score_sequence_viterbi(states, transition, emission, alphabet, seq)
+#             for seq in sequences
+#         ])
+#         # Delta Score: כמה המוטציה "קלקלה" את הציון ביחס ל-WT
+#         return wt_val - raw_scores
+#
+#
+#     # חישוב ציונים לקבוצת האימון
+#     train_scores = get_delta_scores(df_train["sequence"].astype(str).tolist(), wt_score)
+#     train_labels = df_train["label_bin"].astype(int).to_numpy()
+#
+#     # שימוש ב-Youden (עכשיו זה יעבוד כי הכיוון נכון)
+#     best_thr = choose_threshold(train_scores, train_labels, method="youden")
+#
+#     print(f"Optimal Delta Threshold: {best_thr:.4f}")
+#     # הסבר: אם ההפרש גדול מהסף הזה -> המודל יגיד "חולה"
+#
+#     # ---------------------------------------------------------
+#     # 4) בדיקה סופית
+#     # ---------------------------------------------------------
+#     print("\n--- Step 4: Final Evaluation ---")
+#
+#     test_scores = get_delta_scores(df_test["sequence"].astype(str).tolist(), wt_score)
+#     test_labels = df_test["label_bin"].astype(int).to_numpy()
+#
+#     final_metrics = evaluate_threshold(test_scores, test_labels, best_thr)
+#
+#     print("Results on Test Set:")
+#     print(f"  Accuracy:  {final_metrics['accuracy']:.4f}")
+#     print(f"  Precision: {final_metrics['precision']:.4f}")
+#     print(f"  Recall:    {final_metrics['recall']:.4f}")
+#     print(f"  F1 Score:  {final_metrics['f1']:.4f}")
+#
+#     print("\nConfusion Matrix:")
+#     print(f"  TP: {final_metrics['TP']} (Sick correctly identified)")
+#     print(f"  TN: {final_metrics['TN']} (Healthy correctly identified)")
+#     print(f"  FP: {final_metrics['FP']} (Healthy called Sick)")
+#     print(f"  FN: {final_metrics['FN']} (Sick called Healthy)")
+
 
 if __name__ == "__main__":
+    import pandas as pd
+    import numpy as np
+
+    # ---------------------------------------------------------
+    # 1) בניית המודל (Profile-HMM)
+    # ---------------------------------------------------------
+    print("--- Step 1: Building Profile HMM ---")
     aln = AlignIO.read("tp53_msa.fasta", "fasta")
-    alignment = [str(rec.seq).upper() for rec in aln]  # list[str]
+    alignment = [str(rec.seq).upper() for rec in aln]
 
     AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWYX")
     alphabet = {aa: i for i, aa in enumerate(AMINO_ACIDS)}
     theta = 0.35
 
     states, transition, emission = profileHMM(alignment, alphabet, theta)
-    test_seq = alignment[0].replace("-", "")
-    best_ll, v_path = viterbi_profile_hmm(states, transition, emission, alphabet, test_seq)
+    print(f"HMM Model built successfully ({len(states)} states).")
 
-    print("\nStates:\n", states)
-    print("\nTransition Matrix:\n", pd.DataFrame(transition, index=states, columns=states))
-    print("\nEmission Matrix:\n", pd.DataFrame(emission, index=states, columns=list(alphabet.keys())))
-    print("\nViterbi best log-likelihood:", best_ll)
-    print("Viterbi path length:", len(v_path))
-    print("First 50 states in path:", v_path[:50])
+    # ---------------------------------------------------------
+    # 2) טעינת הנתונים
+    # ---------------------------------------------------------
+    print("\n--- Step 2: Loading Data ---")
+    mutants_file = "mutants.fasta"
+    try:
+        X_seqs, y_labels = load_mutant_fasta(mutants_file)
+    except FileNotFoundError:
+        print(f"Error: '{mutants_file}' not found.")
+        exit()
+
+    df = pd.DataFrame({"sequence": X_seqs, "label_bin": y_labels})
+
+    # מציאת רצף ה-WT וחישוב הציון שלו (לשימוש ב-Delta בהמשך)
+    wt_seq = df.iloc[0]["sequence"]
+    wt_score = score_sequence_viterbi(states, transition, emission, alphabet, wt_seq)
+    print(f"WT Sequence identified. Log-Likelihood: {wt_score:.4f}")
+
+    # ---------------------------------------------------------
+    # 3) חישוב ציונים גולמיים (Raw Scores) ובדיקת ממוצעים - [החלק שביקשת]
+    # ---------------------------------------------------------
+    print("\n--- Step 3: Raw Scores Analysis (Debug) ---")
+
+    # חישוב ציונים לכל הרצפים בדאטה-בייס (לפני חלוקה)
+    all_raw_scores = []
+    for seq in df["sequence"].astype(str).tolist():
+        sc = score_sequence_viterbi(states, transition, emission, alphabet, seq)
+        all_raw_scores.append(sc)
+
+    all_raw_scores = np.array(all_raw_scores)
+    labels_all = df["label_bin"].astype(int).to_numpy()
+
+    # הדפסת ממוצעים לבדיקה (כפי שביקשת)
+    mean_healthy = np.mean(all_raw_scores[labels_all == 0])
+    mean_sick = np.mean(all_raw_scores[labels_all == 1])
+
+    print(f"Mean Score Healthy: {mean_healthy:.4f}")
+    print(f"Mean Score Sick:    {mean_sick:.4f}")
+    print(f"Gap (Signal):       {mean_healthy - mean_sick:.4f}")
+
+    # אם ה-Gap קטן מאוד (למשל פחות מ-2.0), המודל מתקשה להבדיל
+
+    # ---------------------------------------------------------
+    # 4) הכנת Delta Scores וחלוקה ל-Train/Test
+    # ---------------------------------------------------------
+    print("\n--- Step 4: Preparing Delta Scores & Splitting ---")
+
+    # הוספת הנתונים ל-DataFrame כדי שנוכל לערבב ולחלק בנוחות
+    df["raw_score"] = all_raw_scores
+    # חישוב Delta: כמה המוטציה הורידה את הציון ביחס ל-WT
+    # ערך גבוה = שינוי דרסטי (חולה), ערך נמוך/שלילי = דומה ל-WT (בריא)
+    df["delta_score"] = wt_score - df["raw_score"]
+
+    # ערבוב הדאטה
+    df = df.sample(frac=1, random_state=42).reset_index(drop=True)
+
+    # חלוקה 80/20
+    split_idx = int(len(df) * 0.80)
+    df_train = df.iloc[:split_idx].copy()
+    df_test = df.iloc[split_idx:].copy()
+
+    print(f"Training on {len(df_train)} samples, Testing on {len(df_test)} samples.")
+
+    # ---------------------------------------------------------
+    # 5) קביעת סף (Threshold) על סמך Delta Scores
+    # ---------------------------------------------------------
+    print("\n--- Step 5: Finding Threshold (on Train Set) ---")
+
+    train_deltas = df_train["delta_score"].to_numpy()
+    train_labels = df_train["label_bin"].to_numpy()
+
+    # שימוש ב-Youden למציאת הסף האופטימלי להפרש (Delta)
+    best_thr = choose_threshold(train_deltas, train_labels, method="means")
+    print(f"Optimal Delta Threshold: {best_thr:.4f}")
+    print("(Sequences with Delta > Threshold will be predicted as Sick)")
+
+    # ---------------------------------------------------------
+    # 6) בדיקה סופית (Evaluation)
+    # ---------------------------------------------------------
+    print("\n--- Step 6: Final Evaluation (on Test Set) ---")
+
+    test_deltas = df_test["delta_score"].to_numpy()
+    test_labels = df_test["label_bin"].to_numpy()
+
+    final_metrics = evaluate_threshold(test_deltas, test_labels, best_thr)
+
+    print("Results on Test Set:")
+    print(f"  Accuracy:  {final_metrics['accuracy']:.4f}")
+    print(f"  Precision: {final_metrics['precision']:.4f}")
+    print(f"  Recall:    {final_metrics['recall']:.4f}")
+    print(f"  F1 Score:  {final_metrics['f1']:.4f}")
+
+    print("\nConfusion Matrix:")
+    print(f"  TP: {final_metrics['TP']} | FP: {final_metrics['FP']}")
+    print(f"  FN: {final_metrics['FN']} | TN: {final_metrics['TN']}")
