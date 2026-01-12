@@ -4,8 +4,6 @@ import os
 input_file = "tp53_orthologs_raw.fasta"
 output_file = "tp53_orthologs_clean.fasta"
 
-# input_file = "tp53_30_orthologs_raw.fasta"
-# output_file = "tp53_30_orthologs_clean.fasta"
 
 
 
