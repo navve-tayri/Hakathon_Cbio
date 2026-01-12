@@ -267,6 +267,27 @@ def plot_roc_curve(y_true, y_scores, output_file="roc_curve.png"):
     print(f"✅ ROC Curve saved to '{output_file}' (AUC: {roc_auc:.4f})")
 
 
+import seaborn as sns
+
+
+def plot_score_distributions(df, threshold):
+    plt.figure(figsize=(10, 6))
+
+    # Plot Healthy (0) in Green and Sick (1) in Red
+    sns.histplot(df[df.label_bin == 0].delta_score, color="green", label="Benign (0)", kde=True, alpha=0.3)
+    sns.histplot(df[df.label_bin == 1].delta_score, color="red", label="Pathogenic (1)", kde=True, alpha=0.3)
+
+    # Draw the Threshold Line
+    plt.axvline(threshold, color='blue', linestyle='--', linewidth=2, label=f'Threshold ({threshold:.2f})')
+
+    plt.title("Distribution of Delta Scores: Healthy vs Sick")
+    plt.xlabel("Delta Score (Higher = Worse)")
+    plt.legend()
+    plt.grid(True, alpha=0.2)
+    plt.savefig("score_distribution.png", dpi=300)
+    print("✅ Distribution plot saved to 'score_distribution.png'")
+
+
 # --- 4. MAIN EXECUTION ---
 if __name__ == "__main__":
     print("--- Step 1: Building Profile HMM ---")
@@ -282,12 +303,15 @@ if __name__ == "__main__":
     print(f"WT (UniProt P04637) Score: {wt_score:.4f}")
 
     print("\n--- Step 3: Loading & Scoring Mutants ---")
-    X_seqs, y_labels = load_mutant_fasta("mutants.fasta")
+    X_seqs, y_labels = load_mutant_fasta("tp53_clinvar_labeled.fasta")
     df = pd.DataFrame({"sequence": X_seqs, "label_bin": y_labels})
 
     # Calculate scores for all
     print("Calculating scores for all mutants (this might take a moment)...")
     df["raw_score"] = [score_sequence_viterbi(states, transition, emission, alphabet, s) for s in df["sequence"]]
+
+    print(f"Mean Healthy Score: {np.mean(df[df.label_bin == 0].raw_score):.4f}")
+    print(f"Mean Sick Score:    {np.mean(df[df.label_bin == 1].raw_score):.4f}")
 
     # Calculate Delta (How much worse than WT?)
     df["delta_score"] = wt_score - df["raw_score"]
@@ -304,10 +328,21 @@ if __name__ == "__main__":
 
     print(f"\nTraining on {len(df_train)} samples, Testing on {len(df_test)} samples.")
 
+    # # --- ADD THIS DEBUG BLOCK ---
+    # print("\n--- DIAGNOSTICS ---")
+    # print("Training Set Class Balance:")
+    # print(df_train['label_bin'].value_counts())
+    #
+    # if len(df_train['label_bin'].unique()) < 2:
+    #     print("CRITICAL WARNING: Training set has only one class! Threshold optimization will fail.")
+    # # ----------------------------
+
+
     print("\n--- Step 4: Optimization & Evaluation ---")
     # Determine best threshold using training data
     best_thr = choose_threshold(df_train.delta_score.values, df_train.label_bin.values, method="youden")
     print(f"Optimal Delta Threshold (calculated on Train): {best_thr:.4f}")
+
 
     # Evaluate on test data using YOUR function
     final_metrics = evaluate_threshold(df_test.delta_score.values, df_test.label_bin.values, best_thr)
@@ -320,6 +355,8 @@ if __name__ == "__main__":
     print("\nConfusion Matrix:")
     print(f"  TP: {final_metrics['TP']} | FP: {final_metrics['FP']}")
     print(f"  FN: {final_metrics['FN']} | TN: {final_metrics['TN']}")
+
+    # plot_score_distributions(df_test, best_thr)
 
     print("\n--- Step 5: Generating Plots ---")
     plot_roc_curve(df_test.label_bin.values, df_test.delta_score.values)
