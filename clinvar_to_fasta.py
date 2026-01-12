@@ -104,7 +104,7 @@ with open(INPUT_FILE, newline="", encoding="utf-8") as f, open(OUTPUT_FASTA, "w"
             count_skipped += 1
             continue
 
-        header = f">TP53_p.{ref}{pos}{alt}|{label}"
+        header = f">TP53_p.{ref}{pos}{alt}|label={label}"
         out.write(header + "\n")
 
         # write sequence in 60 char lines
