@@ -43,8 +43,6 @@ import matplotlib.pyplot as plt
 
 from sklearn.metrics import roc_curve, auc
 
-from build_hmm import MSA_FILE
-
 # -----------------------------
 # Global constants / mappings
 # -----------------------------

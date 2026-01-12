@@ -11,7 +11,7 @@ from sklearn.metrics import roc_curve, auc
 # --- קבצים ---
 # MSA_FILE = "tp53_msa.fasta"
 MSA_FILE = "tp53_30_msa.fasta"
-CLINVAR_FILE = "clinvar_tp53.txt"  # וודאי שזה השם הנכון
+CLINVAR_FILE = "../clinvar_tp53.txt"  # וודאי שזה השם הנכון
 
 # --- הגדרות ---
 AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWY")
@@ -251,7 +251,7 @@ plt.legend(loc="lower right")
 plt.grid(alpha=0.3)
 
 # שמירה לקובץ וסגירה מיידית
-output_file = "roc_curve.png"
+output_file = "../roc_curve.png"
 plt.savefig(output_file, dpi=300)
 plt.close() # סוגר את הזיכרון הגרפי בלי לפתוח חלון
 
