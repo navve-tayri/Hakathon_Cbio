@@ -303,7 +303,7 @@ if __name__ == "__main__":
     print(f"WT (UniProt P04637) Score: {wt_score:.4f}")
 
     print("\n--- Step 3: Loading & Scoring Mutants ---")
-    X_seqs, y_labels = load_mutant_fasta("tp53_clinvar_labeled.fasta")
+    X_seqs, y_labels = load_mutant_fasta("tp53_s1_posneg_labeled.fasta")
     df = pd.DataFrame({"sequence": X_seqs, "label_bin": y_labels})
 
     # Calculate scores for all
@@ -322,7 +322,7 @@ if __name__ == "__main__":
 
     # Split Data
     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
-    split_idx = int(len(df) * 0.60)
+    split_idx = int(len(df) * 0.50)
     df_train = df.iloc[:split_idx]
     df_test = df.iloc[split_idx:]
 
@@ -356,7 +356,7 @@ if __name__ == "__main__":
     print(f"  TP: {final_metrics['TP']} | FP: {final_metrics['FP']}")
     print(f"  FN: {final_metrics['FN']} | TN: {final_metrics['TN']}")
 
-    # plot_score_distributions(df_test, best_thr)
+    plot_score_distributions(df_test, best_thr)
 
     print("\n--- Step 5: Generating Plots ---")
     plot_roc_curve(df_test.label_bin.values, df_test.delta_score.values)

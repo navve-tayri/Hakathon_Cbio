@@ -363,7 +363,7 @@ def evaluation_mode():
     print(f"WT (UniProt P04637) Score: {wt_score:.4f}")
 
     print("\n--- Step 3: Loading & Scoring Mutants ---")
-    X_seqs, y_labels = load_mutant_fasta("tp53_clinvar_labeled.fasta")
+    X_seqs, y_labels = load_mutant_fasta("tp53_clinvar_data_for_model_without_8.fasta")
     df = pd.DataFrame({"sequence": X_seqs, "label_bin": y_labels})
 
     print("Calculating scores for all mutants (this might take a moment)...")
