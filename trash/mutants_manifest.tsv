@@ -1,0 +1,391 @@
+status	variant_name	protein_change_raw	parsed_mut	label	reason
+skipped	NM_000546.6(TP53):c.1177G>T (p.Asp393Tyr)	D234Y, D261Y, D393Y, D354Y	D234Y	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1164A>T (p.Glu388Asp)	E229D, E256D, E349D, E388D	E229D	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1163A>C (p.Glu388Ala)	E256A, E349A, E388A, E229A	E256A	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1162G>C (p.Glu388Gln)	E229Q, E349Q, E388Q, E256Q	E229Q	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1159A>C (p.Thr387Pro)	T255P, T387P, T228P, T348P	T255P	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.1155C>A (p.Phe385Leu)	F346L, F226L, F253L, F385L	F346L	Likely_benign	
+skipped	NM_000546.6(TP53):c.1153T>C (p.Phe385Leu)	F385L, F253L, F346L, F226L	F385L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1151T>C (p.Met384Thr)	M252T, M345T, M384T, M225T	M252T	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1150A>G (p.Met384Val)	M252V, M345V, M384V, M225V	M252V	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1136G>A (p.Arg379His)	R247H, R340H, R379H, R220H	R247H	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1136G>T (p.Arg379Leu)	R247L, R340L, R379L, R220L	R247L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1135C>A (p.Arg379Ser)	R247S, R340S, R379S, R220S	R247S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1132T>A (p.Ser378Thr)	S219T, S378T, S246T, S339T	S219T	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1123C>A (p.Gln375Lys)	Q216K, Q375K, Q336K, Q243K	Q216K	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1121G>T (p.Gly374Val)	G242V, G215V, G335V, G374V	G242V	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1120G>C (p.Gly374Arg)	G242R, G335R, G374R, G215R	G242R	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1096T>G (p.Ser366Ala)	S234A, S327A, S366A, S207A	S234A	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1093C>T (p.His365Tyr)	H233Y, H326Y, H365Y, H206Y	H233Y	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1079G>C (p.Gly360Ala)	G228A, G321A, G360A, G201A	G228A	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.1067G>A (p.Gly356Glu)	G317E, G197E, G356E, G224E	G317E	Likely_benign	
+skipped	NM_000546.6(TP53):c.1066G>C (p.Gly356Arg)	G224R, G317R, G356R, G197R	G224R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.1063G>A (p.Ala355Thr)	A316T, A355T, A196T, A223T	A316T	Likely_benign	
+skipped	NM_000546.6(TP53):c.1061A>C (p.Gln354Pro)	Q222P, Q354P, Q195P, Q315P	Q222P	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1061A>T (p.Gln354Leu)	Q195L, Q222L, Q315L, Q354L	Q195L	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1060C>A (p.Gln354Lys)	Q222K, Q315K, Q354K, Q195K	Q222K	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1049T>G (p.Leu350Arg)	L350R, L191R, L218R, L311R	L350R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1046A>G (p.Glu349Gly)	E190G, E217G, E310G, E349G	E190G	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1040C>G (p.Ala347Gly)	A188G, A215G, A308G, A347G	A188G	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1040C>A (p.Ala347Asp)	A215D, A308D, A347D, A188D	A215D	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.1031T>C (p.Leu344Pro)	L344P, L212P, L305P, L185P	L344P	Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.1029G>T (p.Glu343Asp)	E343D, E184D, E304D, E211D	E343D	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.1024_1025delinsTT (p.Arg342Leu)	R303L, R183L, R210L, R342L	R303L	Benign	
+created	NM_000546.6(TP53):c.1025G>A (p.Arg342Gln)	R210Q, R303Q, R342Q, R183Q	R210Q	Likely_benign	
+created	NM_000546.6(TP53):c.1025G>C (p.Arg342Pro)	R210P, R303P, R342P, R183P	R210P	Pathogenic	
+skipped	NM_000546.6(TP53):c.1023C>G (p.Phe341Leu)	F209L, F302L, F182L, F341L	F209L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1021_1022delinsAG (p.Phe341Ser)	F209S, F182S, F302S, F341S	F209S	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1020G>C (p.Met340Ile)	M181I, M208I, M301I, M340I	M181I	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.1020G>T (p.Met340Ile)	M301I, M208I, M340I, M181I	M301I	Likely_benign	
+skipped	NM_000546.6(TP53):c.1015G>C (p.Glu339Gln)	E207Q, E300Q, E339Q, E180Q	E207Q	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1010G>C (p.Arg337Pro)	R205P, R298P, R337P, R178P	R205P	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1010G>T (p.Arg337Leu)	R205L, R298L, R337L, R178L	R205L	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1009C>A (p.Arg337Ser)	R178S, R205S, R298S, R337S	R178S	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1009C>G (p.Arg337Gly)	R205G, R298G, R337G, R178G	R205G	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1009C>T (p.Arg337Cys)	R205C, R298C, R337C, R178C	R205C	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1006G>C (p.Glu336Gln)	E204Q, E297Q, E177Q, E336Q	E204Q	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1004G>T (p.Arg335Leu)	R203L, R296L, R335L, R176L	R203L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1003C>T (p.Arg335Cys)	R203C, R296C, R335C, R176C	R203C	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.1000G>T (p.Gly334Trp)	G202W, G295W, G334W, G175W	G202W	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.998G>A (p.Arg333His)	R201H, R294H, R333H, R174H	R201H	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.997C>T (p.Arg333Cys)	R201C, R294C, R333C, R174C	R201C	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.995T>A (p.Ile332Asn)	I173N, I200N, I293N, I332N	I173N	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.994A>C (p.Ile332Leu)	I200L, I293L, I173L, I332L	I200L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+312C>T	S214L, S346L, S187L, S307L	S214L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+307C>G	N212K, N344K, N305K, N185K	N212K	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+290T>C	C207R, C339R, C180R, C300R	C207R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+287T>C	W206R, W338R, W179R, W299R	W206R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+285G>A	R205Q, R337Q, R178Q, R298Q	R205Q	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+223T>C	C209R, C341R, C302R, C182R	C209R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+216A>C	K206N, K338N, K179N, K299N	K206N	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+203C>T	T175I, T295I, T334I, T202I	T175I	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.993+199C>G	Q201E, Q333E, Q174E, Q294E	Q201E	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.978A>C (p.Glu326Asp)	E194D, E167D, E287D, E326D	E194D	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.977A>T (p.Glu326Val)	E167V, E194V, E287V, E326V	E167V	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.972T>A (p.Asp324Glu)	D165E, D192E, D285E, D324E	D165E	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.970G>A (p.Asp324Asn)	D165N, D192N, D285N, D324N	D165N	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.956A>C (p.Lys319Thr)	K187T, K160T, K280T, K319T	K187T	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.952C>T (p.Pro318Ser)	P159S, P186S, P279S, P318S	P159S	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.949C>A (p.Gln317Lys)	Q185K, Q278K, Q317K, Q158K	Q185K	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.946C>A (p.Pro316Thr)	P184T, P277T, P316T, P157T	P184T	Likely_benign	
+skipped	NM_000546.6(TP53):c.943T>A (p.Ser315Thr)	S183T, S276T, S315T, S156T	S183T	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.938G>A (p.Ser313Asn)	S154N, S181N, S313N, S274N	S154N	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.935C>A (p.Thr312Asn)	T180N, T312N, T153N, T273N	T180N	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.935C>G (p.Thr312Ser)	T180S, T273S, T312S, T153S	T180S	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.930C>G (p.Asn310Lys)	N178K, N271K, N310K, N151K	N178K	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.929A>G (p.Asn310Ser)	N178S, N271S, N310S, N151S	N178S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.920C>G (p.Ala307Gly)	A175G, A268G, A307G, A148G	A175G	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.907A>G (p.Ser303Gly)	S171G, S264G, S303G, S144G	S171G	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.905G>C (p.Gly302Ala)	G170A, G263A, G143A, G302A	G170A	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.899C>T (p.Pro300Leu)	P141L, P168L, P261L, P300L	P141L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.892G>A (p.Glu298Lys)	E166K, E259K, E298K, E139K	E166K	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.887A>G (p.His296Arg)	H164R, H257R, H296R, H137R	H164R	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.886C>T (p.His296Tyr)	H164Y, H257Y, H296Y, H137Y	H164Y	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.883C>T (p.Pro295Ser)	P163S, P256S, P295S, P136S	P163S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.877G>T (p.Gly293Trp)	G161W, G254W, G293W, G134W	G161W	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.875A>G (p.Lys292Arg)	K160R, K253R, K292R, K133R	K160R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.869G>A (p.Arg290His)	R158H, R251H, R290H, R131H	R158H	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.868C>T (p.Arg290Cys)	R158C, R251C, R290C, R131C	R158C	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.866T>C (p.Leu289Pro)	L130P, L157P, L250P, L289P	L130P	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.857A>C (p.Glu286Ala)	E154A, E247A, E286A, E127A	E154A	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.856G>A (p.Glu286Lys)	E154K, E247K, E286K, E127K	E154K	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.854A>T (p.Glu285Val)	E285V, E153V, E246V, E126V	E285V	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.853G>A (p.Glu285Lys)	E153K, E246K, E285K, E126K	E153K	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.851C>T (p.Thr284Ile)	T152I, T245I, T284I, T125I	T152I	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.847C>T (p.Arg283Cys)	R151C, R244C, R283C, R124C	R151C	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.845G>C (p.Arg282Pro)	R150P, R243P, R282P, R123P	R150P	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.844C>G (p.Arg282Gly)	R150G, R243G, R282G, R123G	R150G	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.844C>T (p.Arg282Trp)	R282W, R150W, R243W, R123W	R282W	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.843C>A (p.Asp281Glu)	D149E, D242E, D281E, D122E	D149E	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.842A>C (p.Asp281Ala)	D149A, D242A, D281A, D122A	D149A	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.842A>T (p.Asp281Val)	D149V, D242V, D281V, D122V	D149V	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.842A>G (p.Asp281Gly)	D149G, D242G, D281G, D122G	D149G	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.841G>C (p.Asp281His)	D149H, D242H, D281H, D122H	D149H	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.841G>A (p.Asp281Asn)	D149N, D242N, D281N, D122N	D149N	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.841G>T (p.Asp281Tyr)	D149Y, D242Y, D281Y, D122Y	D149Y	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.840A>C (p.Arg280Ser)	R148S, R241S, R280S, R121S	R148S	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.839G>C (p.Arg280Thr)	R280T, R148T, R241T, R121T	R280T	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.833C>T (p.Pro278Leu)	P146L, P239L, P278L, P119L	P146L	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.832C>A (p.Pro278Thr)	P146T, P239T, P278T, P119T	P146T	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.832C>T (p.Pro278Ser)	P146S, P239S, P278S, P119S	P146S	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.829T>G (p.Cys277Gly)	C145G, C238G, C277G, C118G	C145G	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.827C>G (p.Ala276Gly)	A144G, A237G, A276G, A117G	A144G	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.825T>G (p.Cys275Trp)	C143W, C236W, C275W, C116W	C143W	Likely_pathogenic	
+created	NM_000546.6(TP53):c.824G>T (p.Cys275Phe)	C143F, C236F, C275F, C116F	C143F	Pathogenic	
+created	NM_000546.6(TP53):c.824G>A (p.Cys275Tyr)	C143Y, C236Y, C275Y, C116Y	C143Y	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.820G>A (p.Val274Ile)	V142I, V115I, V235I, V274I	V142I	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.818G>T (p.Arg273Leu)	R141L, R234L, R273L, R114L	R141L	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.818G>C (p.Arg273Pro)	R141P, R234P, R273P, R114P	R141P	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.818G>A (p.Arg273His)	R273H, R141H, R234H, R114H	R273H	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.817C>G (p.Arg273Gly)	R141G, R234G, R273G, R114G	R141G	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.817C>A (p.Arg273Ser)	R141S, R234S, R273S, R114S	R141S	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.817C>T (p.Arg273Cys)	R141C, R234C, R273C, R114C	R141C	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.814G>C (p.Val272Leu)	V140L, V233L, V272L, V113L	V140L	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.814G>A (p.Val272Met)	V140M, V233M, V272M, V113M	V140M	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.814G>T (p.Val272Leu)	V272L, V140L, V233L, V113L	V272L	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.812A>T (p.Glu271Val)	E139V, E112V, E232V, E271V	E139V	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.809T>G (p.Phe270Cys)	F138C, F231C, F270C, F111C	F138C	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.809T>C (p.Phe270Ser)	F138S, F231S, F270S, F111S	F138S	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.808T>G (p.Phe270Val)	F138V, F231V, F270V, F111V	F138V	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.806G>T (p.Ser269Ile)	S110I, S137I, S230I, S269I	S110I	Likely_pathogenic	
+created	NM_000546.6(TP53):c.805A>T (p.Ser269Cys)	S110C, S137C, S230C, S269C	S110C	Benign	
+created	NM_000546.6(TP53):c.799C>G (p.Arg267Gly)	R228G, R267G, R108G, R135G	R228G	Pathogenic	
+created	NM_000546.6(TP53):c.799C>T (p.Arg267Trp)	R135W, R228W, R267W, R108W	R135W	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.797G>A (p.Gly266Glu)	G134E, G227E, G266E, G107E	G134E	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.796G>A (p.Gly266Arg)	G134R, G266R, G227R, G107R	G134R	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.794T>A (p.Leu265Gln)	L106Q, L226Q, L133Q, L265Q	L106Q	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.794T>C (p.Leu265Pro)	L133P, L226P, L265P, L106P	L133P	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.788A>G (p.Asn263Ser)	N263S, N131S, N224S, N104S	N263S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.784G>A (p.Gly262Ser)	G130S, G223S, G262S, G103S	G130S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.779C>A (p.Ser260Tyr)	S128Y, S221Y, S260Y, S101Y	S128Y	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.776A>C (p.Asp259Ala)	D100A, D127A, D220A, D259A	D100A	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.771_772delinsAA (p.Glu258Lys)	E126K, E219K, E258K, E99K	E126K	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.772G>A (p.Glu258Lys)	E258K, E126K, E219K, E99K	E258K	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.761_762delinsAT (p.Ile254Asn)	I215N, I254N, I122N, I95N	I215N	Pathogenic	
+created	NM_000546.6(TP53):c.761T>C (p.Ile254Thr)	I215T, I122T, I254T, I95T	I215T	Pathogenic	
+skipped	NM_000546.6(TP53):c.761T>A (p.Ile254Asn)	I254N, I95N, I122N, I215N	I254N	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.760A>G (p.Ile254Val)	I215V, I122V, I254V, I95V	I215V	Likely_benign	
+created	NM_000546.6(TP53):c.757A>G (p.Thr253Ala)	T214A, T253A, T94A, T121A	T214A	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.751A>T (p.Ile251Phe)	I251F, I92F, I119F, I212F	I251F	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.751A>C (p.Ile251Leu)	I119L, I212L, I251L, I92L	I119L	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.749C>T (p.Pro250Leu)	P118L, P211L, P250L, P91L	P118L	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.747G>T (p.Arg249Ser)	R249S, R117S, R210S, R90S	R249S	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.746G>C (p.Arg249Thr)	R117T, R210T, R249T, R90T	R117T	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.743G>C (p.Arg248Pro)	R116P, R209P, R248P, R89P	R116P	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.743G>T (p.Arg248Leu)	R116L, R209L, R248L, R89L	R116L	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.743G>A (p.Arg248Gln)	R248Q, R116Q, R209Q, R89Q	R248Q	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.741_742delinsTT (p.Arg248Trp)	R209W, R89W, R116W, R248W	R209W	Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.742C>G (p.Arg248Gly)	R116G, R209G, R248G, R89G	R116G	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.742C>T (p.Arg248Trp)	R248W, R116W, R209W, R89W	R248W	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.738G>C (p.Met246Ile)	M87I, M207I, M246I, M114I	M87I	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.738G>A (p.Met246Ile)	M246I, M114I, M207I, M87I	M246I	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.737T>A (p.Met246Lys)	M114K, M246K, M207K, M87K	M114K	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.736A>G (p.Met246Val)	M114V, M207V, M246V, M87V	M114V	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.734_735delinsAT (p.Gly245Asp)	G206D, G113D, G245D, G86D	G206D	Pathogenic	
+skipped	NM_000546.6(TP53):c.734G>T (p.Gly245Val)	G113V, G206V, G245V, G86V	G113V	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.734G>A (p.Gly245Asp)	G245D, G113D, G206D, G86D	G245D	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.733G>A (p.Gly245Ser)	G245S, G113S, G206S, G86S	G245S	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.733G>T (p.Gly245Cys)	G245C, G113C, G206C, G86C	G245C	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.731G>C (p.Gly244Ala)	G112A, G205A, G244A, G85A	G112A	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.731G>T (p.Gly244Val)	G112V, G205V, G244V, G85V	G112V	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.731G>A (p.Gly244Asp)	G112D, G205D, G244D, G85D	G112D	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.730G>A (p.Gly244Ser)	G112S, G205S, G244S, G85S	G112S	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.726C>G (p.Cys242Trp)	C110W, C203W, C242W, C83W	C110W	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.725G>A (p.Cys242Tyr)	C242Y, C110Y, C203Y, C83Y	C242Y	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.722C>A (p.Ser241Tyr)	S109Y, S202Y, S241Y, S82Y	S109Y	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.722C>G (p.Ser241Cys)	S109C, S202C, S241C, S82C	S109C	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.722C>T (p.Ser241Phe)	S241F, S109F, S202F, S82F	S241F	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.721T>A (p.Ser241Thr)	S109T, S202T, S241T, S82T	S109T	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.721T>G (p.Ser241Ala)	S109A, S202A, S241A, S82A	S109A	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.719G>A (p.Ser240Asn)	S108N, S201N, S240N, S81N	S108N	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.718A>T (p.Ser240Cys)	S108C, S201C, S240C, S81C	S108C	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.718A>G (p.Ser240Gly)	S201G, S240G, S108G, S81G	S201G	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.717C>A (p.Asn239Lys)	N80K, N200K, N107K, N239K	N80K	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.716A>G (p.Asn239Ser)	N107S, N200S, N239S, N80S	N107S	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.714T>G (p.Cys238Trp)	C106W, C199W, C238W, C79W	C106W	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.713G>C (p.Cys238Ser)	C106S, C199S, C238S, C79S	C106S	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.713G>T (p.Cys238Phe)	C106F, C199F, C238F, C79F	C106F	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.713G>A (p.Cys238Tyr)	C106Y, C199Y, C238Y, C79Y	C106Y	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.712T>G (p.Cys238Gly)	C106G, C199G, C238G, C79G	C106G	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.712T>C (p.Cys238Arg)	C106R, C199R, C238R, C79R	C106R	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.711G>C (p.Met237Ile)	M105I, M198I, M237I, M78I	M105I	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.711G>A (p.Met237Ile)	M105I, M198I, M237I, M78I	M105I	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.710T>A (p.Met237Lys)	M105K, M198K, M237K, M78K	M105K	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.706T>C (p.Tyr236His)	Y104H, Y197H, Y236H, Y77H	Y104H	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.704A>G (p.Asn235Ser)	N103S, N196S, N235S, N76S	N103S	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.701A>G (p.Tyr234Cys)	Y102C, Y195C, Y234C, Y75C	Y102C	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.700T>A (p.Tyr234Asn)	Y102N, Y195N, Y234N, Y75N	Y102N	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.700T>C (p.Tyr234His)	Y102H, Y195H, Y234H, Y75H	Y102H	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.700T>G (p.Tyr234Asp)	Y102D, Y195D, Y234D, Y75D	Y102D	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.695T>A (p.Ile232Asn)	I232N, I193N, I73N, I100N	I232N	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.695T>G (p.Ile232Ser)	I100S, I193S, I232S, I73S	I100S	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.695T>C (p.Ile232Thr)	I100T, I193T, I232T, I73T	I100T	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.682G>T (p.Asp228Tyr)	D228Y, D96Y, D189Y, D69Y	D228Y	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.659A>G (p.Tyr220Cys)	Y181C, Y220C, Y88C, Y61C	Y181C	Pathogenic	
+skipped	NM_000546.6(TP53):c.659A>C (p.Tyr220Ser)	Y220S, Y181S, Y88S, Y61S	Y220S	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.658T>C (p.Tyr220His)	Y181H, Y220H, Y88H, Y61H	Y181H	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.653T>A (p.Val218Glu)	V179E, V218E, V86E, V59E	V179E	Likely_pathogenic	
+created	NM_000546.6(TP53):c.646G>A (p.Val216Met)	V177M, V216M, V84M, V57M	V177M	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.641A>T (p.His214Leu)	H175L, H214L, H82L, H55L	H175L	Likely_pathogenic	
+created	NM_000546.6(TP53):c.641A>G (p.His214Arg)	H175R, H214R, H82R, H55R	H175R	Pathogenic	
+created	NM_000546.6(TP53):c.637_639delinsTGG (p.Arg213Trp)	R174W, R54W, R81W, R213W	R174W	Likely_pathogenic	
+created	NM_000546.6(TP53):c.638G>C (p.Arg213Pro)	R174P, R213P, R81P, R54P	R174P	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.638G>A (p.Arg213Gln)	R174Q, R213Q, R81Q, R54Q	R174Q	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.635T>C (p.Phe212Ser)	F53S, F212S, F173S, F80S	F53S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.629A>G (p.Asn210Ser)	N171S, N210S, N51S, N78S	N171S	Likely_benign	
+skipped	NM_000546.6(TP53):c.622G>A (p.Asp208Asn)	D49N, D169N, D76N, D208N	D49N	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.621T>G (p.Asp207Glu)	D207E, D48E, D75E, D168E	D207E	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.614A>G (p.Tyr205Cys)	Y166C, Y205C, Y73C, Y46C	Y166C	Pathogenic	
+created	NM_000546.6(TP53):c.613T>G (p.Tyr205Asp)	Y166D, Y205D, Y73D, Y46D	Y166D	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.613T>C (p.Tyr205His)	Y166H, Y205H, Y73H, Y46H	Y166H	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.612G>C (p.Glu204Asp)	E72D, E204D, E165D, E45D	E72D	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.596G>T (p.Gly199Val)	G160V, G199V, G67V, G40V	G160V	Likely_pathogenic	
+created	NM_000546.6(TP53):c.589G>A (p.Val197Met)	V158M, V197M, V65M, V38M	V158M	Likely_pathogenic	
+created	NM_000546.6(TP53):c.587G>C (p.Arg196Pro)	R157P, R196P, R64P, R37P	R157P	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.584T>C (p.Ile195Thr)	I156T, I195T, I63T, I36T	I156T	Pathogenic	
+created	NM_000546.6(TP53):c.580C>T (p.Leu194Phe)	L155F, L194F, L62F, L35F	L155F	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.578A>C (p.His193Pro)	H154P, H193P, H61P, H34P	H154P	Pathogenic	
+created	NM_000546.6(TP53):c.578A>G (p.His193Arg)	H154R, H193R, H61R, H34R	H154R	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.577C>A (p.His193Asn)	H154N, H193N, H61N, H34N	H154N	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.577C>T (p.His193Tyr)	H154Y, H193Y, H61Y, H34Y	H154Y	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.576G>C (p.Gln192His)	Q153H, Q192H, Q33H, Q60H	Q153H	Likely_benign	
+created	NM_000546.6(TP53):c.572C>G (p.Pro191Arg)	P152R, P191R, P59R, P32R	P152R	Likely_benign	
+created	NM_000546.6(TP53):c.569C>T (p.Pro190Leu)	P151L, P190L, P58L, P31L	P151L	Likely_pathogenic	
+created	NM_000546.6(TP53):c.558T>A (p.Asp186Glu)	D147E, D186E, D54E, D27E	D147E	Likely_benign	
+skipped	NM_000546.6(TP53):c.556G>A (p.Asp186Asn)	D54N, D147N, D186N, D27N	D54N	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.555C>G (p.Ser185Arg)	S53R, S146R, S26R, S185R	S53R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.554G>A (p.Ser185Asn)	S146N, S185N, S53N, S26N	S146N	Likely_benign	
+created	NM_000546.6(TP53):c.547T>C (p.Ser183Pro)	S144P, S24P, S51P, S183P	S144P	Likely_benign	
+skipped	NM_000546.6(TP53):c.542G>C (p.Arg181Pro)	R181P, R22P, R142P, R49P	R181P	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.542G>A (p.Arg181His)	R142H, R181H, R49H, R22H	R142H	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.541C>T (p.Arg181Cys)	R142C, R181C, R49C, R22C	R142C	Likely_pathogenic	
+created	NM_000546.6(TP53):c.538G>A (p.Glu180Lys)	E141K, E180K, E48K, E21K	E141K	Likely_pathogenic	
+created	NM_000546.6(TP53):c.537T>A (p.His179Gln)	H140Q, H47Q, H179Q, H20Q	H140Q	Pathogenic	
+created	NM_000546.6(TP53):c.537T>G (p.His179Gln)	H140Q, H179Q, H47Q, H20Q	H140Q	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.535C>G (p.His179Asp)	H140D, H179D, H47D, H20D	H140D	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.535C>T (p.His179Tyr)	H140Y, H179Y, H47Y, H20Y	H140Y	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.534C>G (p.His178Gln)	H178Q, H46Q, H19Q, H139Q	H178Q	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.534C>A (p.His178Gln)	H46Q, H139Q, H178Q, H19Q	H46Q	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.532C>G (p.His178Asp)	H178D, H46D, H139D, H19D	H178D	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.530C>G (p.Pro177Arg)	P177R, P45R, P138R, P18R	P177R	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.526_528delinsCGG (p.Cys176Arg)	C17R, C44R, C137R, C176R	C17R	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.527G>T (p.Cys176Phe)	C137F, C176F, C44F, C17F	C137F	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.527G>A (p.Cys176Tyr)	C137Y, C176Y, C44Y, C17Y	C137Y	Pathogenic	
+created	NM_000546.6(TP53):c.524G>T (p.Arg175Leu)	R136L, R175L, R43L, R16L	R136L	Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.524G>A (p.Arg175His)	R175H, R136H, R43H, R16H	R175H	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.523C>G (p.Arg175Gly)	R136G, R175G, R43G, R16G	R136G	Pathogenic	
+created	NM_000546.6(TP53):c.521G>A (p.Arg174Lys)	R135K, R174K, R42K, R15K	R135K	Likely_benign	
+created	NM_000546.6(TP53):c.518T>C (p.Val173Ala)	V134A, V173A, V41A, V14A	V134A	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.517G>T (p.Val173Leu)	V134L, V173L, V41L, V14L	V134L	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.517G>A (p.Val173Met)	V134M, V173M, V41M, V14M	V134M	Pathogenic	
+created	NM_000546.6(TP53):c.513G>T (p.Glu171Asp)	E12D, E132D, E171D, E39D	E12D	Pathogenic	
+created	NM_000546.6(TP53):c.512A>G (p.Glu171Gly)	E132G, E171G, E39G, E12G	E132G	Pathogenic	
+created	NM_000546.6(TP53):c.511G>A (p.Glu171Lys)	E132K, E171K, E39K, E12K	E132K	Likely_benign	
+created	NM_000546.6(TP53):c.509C>T (p.Thr170Met)	T131M, T170M, T38M, T11M	T131M	Likely_benign	
+created	NM_000546.6(TP53):c.503A>C (p.His168Pro)	H129P, H36P, H168P, H9P	H129P	Likely_pathogenic	
+created	NM_000546.6(TP53):c.503A>T (p.His168Leu)	H129L, H168L, H36L, H9L	H129L	Pathogenic	
+created	NM_000546.6(TP53):c.496T>A (p.Ser166Thr)	S127T, S34T, S166T, S7T	S127T	Likely_benign	
+created	NM_000546.6(TP53):c.494A>T (p.Gln165Leu)	Q126L, Q165L, Q33L, Q6L	Q126L	Pathogenic	
+created	NM_000546.6(TP53):c.490A>G (p.Lys164Glu)	K125E, K164E, K32E, K5E	K125E	Pathogenic	
+created	NM_000546.6(TP53):c.488A>G (p.Tyr163Cys)	Y124C, Y163C, Y31C, Y4C	Y124C	Pathogenic	
+created	NM_000546.6(TP53):c.487T>C (p.Tyr163His)	Y124H, Y163H, Y31H, Y4H	Y124H	Pathogenic	
+created	NM_000546.6(TP53):c.481G>A (p.Ala161Thr)	A122T, A161T, A29T, A2T	A122T	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.480G>A (p.Met160Ile)	M121I, M160I, M28I, M1I	M121I	Likely_benign	
+created	NM_000546.6(TP53):c.476C>A (p.Ala159Asp)	A120D, A159D, A27D	A120D	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.476C>T (p.Ala159Val)	A120V, A159V, A27V	A120V	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.473_474delinsTT (p.Arg158Leu)	R158L, R119L, R26L	R158L	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.473G>T (p.Arg158Leu)	R158L, R26L, R119L	R158L	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.473G>C (p.Arg158Pro)	R119P, R158P, R26P	R119P	Pathogenic	
+created	NM_000546.6(TP53):c.473G>A (p.Arg158His)	R119H, R158H, R26H	R119H	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.472C>A (p.Arg158Ser)	R119S, R158S, R26S	R119S	Pathogenic	
+skipped	NM_000546.6(TP53):c.472C>G (p.Arg158Gly)	R158G, R26G, R119G	R158G	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.470_471delinsGT (p.Val157Gly)	V25G, V157G, V118G	V25G	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.470T>G (p.Val157Gly)	V118G, V157G, V25G	V118G	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.469G>A (p.Val157Ile)	V118I, V157I, V25I	V118I	Likely_benign	
+skipped	NM_000546.6(TP53):c.469G>T (p.Val157Phe)	V157F, V118F, V25F	V157F	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.467G>C (p.Arg156Pro)	R117P, R156P, R24P	R117P	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.464C>A (p.Thr155Asn)	T155N, T116N, T23N	T155N	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.455C>G (p.Pro152Arg)	P152R, P20R, P113R	P152R	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.455C>T (p.Pro152Leu)	P113L, P152L, P20L	P113L	Pathogenic	
+created	NM_000546.6(TP53):c.451_452delinsAG (p.Pro151Ser)	P151S, P19S, P112S	P151S	Pathogenic	
+created	NM_000546.6(TP53):c.451_452delinsTT (p.Pro151Phe)	P151F, P19F, P112F	P151F	Likely_pathogenic	
+created	NM_000546.6(TP53):c.452C>G (p.Pro151Arg)	P112R, P151R, P19R	P112R	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.451C>G (p.Pro151Ala)	P112A, P151A, P19A	P112A	Pathogenic	
+created	NM_000546.6(TP53):c.451C>T (p.Pro151Ser)	P151S, P112S, P19S	P151S	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.451C>A (p.Pro151Thr)	P151T, P112T, P19T	P151T	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.440T>G (p.Val147Gly)	V108G, V147G, V15G	V108G	Likely_pathogenic	
+created	NM_000546.6(TP53):c.428T>C (p.Val143Ala)	V104A, V11A, V143A	V104A	Pathogenic	
+created	NM_000546.6(TP53):c.427G>A (p.Val143Met)	V104M, V11M, V143M	V104M	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.423C>G (p.Cys141Trp)	C102W, C141W, C9W	C102W	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.422G>A (p.Cys141Tyr)	C102Y, C141Y, C9Y	C102Y	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.413C>T (p.Ala138Val)	A138V, A6V, A99V	A138V	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.412G>C (p.Ala138Pro)	A138P, A6P, A99P	A138P	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.404G>C (p.Cys135Ser)	C135S, C3S, C96S	C135S	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.404G>T (p.Cys135Phe)	C135F, C3F, C96F	C135F	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.403T>G (p.Cys135Gly)	C135G, C3G, C96G	C135G	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.403T>C (p.Cys135Arg)	C135R, C3R, C96R	C135R	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.401T>G (p.Phe134Cys)	F134C, F2C, F95C	F134C	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.400T>A (p.Phe134Ile)	F95I, F134I, F2I	F95I	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.398T>C (p.Met133Thr)	M133T, M1T, M94T	M133T	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.396G>T (p.Lys132Asn)	K132N, K93N	K132N	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.396G>C (p.Lys132Asn)	K132N, K93N	K132N	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.395A>G (p.Lys132Arg)	K132R, K93R	K132R	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.392A>T (p.Asn131Ile)	N131I, N92I	N131I	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.391A>C (p.Asn131His)	N131H, N92H	N131H	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.391A>T (p.Asn131Tyr)	N131Y, N92Y	N131Y	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.389T>A (p.Leu130His)	L130H, L91H	L130H	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.389T>C (p.Leu130Pro)	L130P, L91P	L130P	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.386C>A (p.Ala129Asp)	A129D, A90D	A129D	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.380C>A (p.Ser127Tyr)	S127Y, S88Y	S127Y	Pathogenic	
+created	NM_000546.6(TP53):c.380C>G (p.Ser127Cys)	S127C, S88C	S127C	Pathogenic	
+created	NM_000546.6(TP53):c.380C>T (p.Ser127Phe)	S127F, S88F	S127F	Pathogenic_or_Likely_pathogenic	
+created	NM_000546.6(TP53):c.379T>C (p.Ser127Pro)	S127P, S88P	S127P	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.374C>G (p.Thr125Arg)	T125R, T86R	T125R	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.374C>A (p.Thr125Lys)	T125K, T86K	T125K	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.372C>G (p.Cys124Trp)	C124W, C85W	C124W	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.370T>C (p.Cys124Arg)	C124R, C85R	C124R	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.370T>A (p.Cys124Ser)	C124S, C85S	C124S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.364G>A (p.Val122Met)	V122M, V83M	V122M	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.353C>T (p.Thr118Ile)	T118I, T79I	T118I	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.344A>G (p.His115Arg)	H115R, H76R	H115R	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.339C>G (p.Phe113Leu)	F113L, F74L	F113L	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.339C>A (p.Phe113Leu)	F113L, F74L	F113L	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.338T>G (p.Phe113Cys)	F113C, F74C	F113C	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.337T>A (p.Phe113Ile)	F74I, F113I	F74I	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.332T>A (p.Leu111Gln)	L111Q, L72Q	L111Q	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.332T>G (p.Leu111Arg)	L111R, L72R	L111R	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.332T>C (p.Leu111Pro)	L111P, L72P	L111P	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.329_330delinsCC (p.Arg110Pro)	R110P, R71P	R110P	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.329G>T (p.Arg110Leu)	R110L, R71L	R110L	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.329G>A (p.Arg110His)	R110H, R71H	R110H	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.328C>G (p.Arg110Gly)	R71G, R110G	R71G	Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.326T>G (p.Phe109Cys)	F109C, F70C	F109C	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.325T>A (p.Phe109Ile)	F109I, F70I	F109I	Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.322G>A (p.Gly108Ser)	G108S, G69S	G108S	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.5(TP53):c.319T>C (p.Tyr107His)	Y107H, Y68H	Y107H	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.318C>G (p.Ser106Arg)	S106R, S67R	S106R	Pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.313G>A (p.Gly105Ser)	G105S, G66S	G105S	Pathogenic_or_Likely_pathogenic	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.313G>C (p.Gly105Arg)	G66R, G105R	G66R	Pathogenic_or_Likely_pathogenic	
+skipped	NM_000546.6(TP53):c.283T>A (p.Ser95Thr)	S95T, S56T	S95T	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.281C>T (p.Ser94Leu)	S55L, S94L	S55L	Likely_benign	
+skipped	NM_000546.6(TP53):c.280T>G (p.Ser94Ala)	S94A, S55A	S94A	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.250G>A (p.Ala84Thr)	A45T, A84T	A45T	Likely_benign	
+skipped	NM_000546.6(TP53):c.247G>C (p.Ala83Pro)	A83P, A44P	A83P	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.245C>T (p.Pro82Leu)	P43L, P82L	P43L	Likely_benign	
+skipped	NM_000546.6(TP53):c.236C>T (p.Ala79Val)	A79V, A40V	A79V	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.227C>G (p.Ala76Gly)	A37G, A76G	A37G	Benign	
+created	NM_000546.6(TP53):c.221C>T (p.Ala74Val)	A35V, A74V	A35V	Likely_benign	
+created	NM_000546.6(TP53):c.215_219delinsGCGTA (p.Pro72Arg)	P33R, P72R	P33R	Benign	
+created	NM_000546.6(TP53):c.218T>A (p.Val73Glu)	V34E, V73E	V34E	Likely_benign	
+created	NM_000546.6(TP53):c.217G>A (p.Val73Met)	V34M, V73M	V34M	Benign	
+created	NM_000546.6(TP53):c.215_216inv (p.Pro72Arg)	P33R, P72R	P33R	Likely_benign	
+created	NM_000546.6(TP53):c.215C>A (p.Pro72His)	P33H, P72H	P33H	Benign	
+skipped	NM_000546.6(TP53):c.215C>G (p.Pro72Arg)	P72R, P33R	P72R	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.214C>G (p.Pro72Ala)	P33A, P72A	P33A	Likely_benign	
+skipped	NM_000546.6(TP53):c.196A>G (p.Met66Val)	M66V, M27V	M66V	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.188C>G (p.Ala63Gly)	A24G, A63G	A24G	Likely_benign	
+created	NM_000546.6(TP53):c.188C>T (p.Ala63Val)	A24V, A63V	A24V	Benign	
+created	NM_000546.6(TP53):c.187G>A (p.Ala63Thr)	A24T, A63T	A24T	Likely_benign	
+created	NM_000546.6(TP53):c.185A>G (p.Glu62Gly)	E23G, E62G	E23G	Likely_benign	
+created	NM_000546.6(TP53):c.176G>A (p.Gly59Asp)	G20D, G59D	G20D	Likely_benign	
+created	NM_000546.6(TP53):c.172C>G (p.Pro58Ala)	P19A, P58A	P19A	Likely_benign	
+created	NM_000546.6(TP53):c.170A>T (p.Asp57Val)	D18V, D57V	D18V	Likely_benign	
+created	NM_000546.6(TP53):c.149T>C (p.Ile50Thr)	I11T, I50T	I11T	Likely_benign	
+created	NM_000546.6(TP53):c.145G>A (p.Asp49Asn)	D10N, D49N	D10N	Benign	
+created	NM_000546.6(TP53):c.145G>C (p.Asp49His)	D10H, D49H	D10H	Benign	
+skipped	NM_000546.6(TP53):c.144C>A (p.Asp48Glu)	D48E, D9E	D48E	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.143A>G (p.Asp48Gly)	D48G, D9G	D48G	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.139C>T (p.Pro47Ser)	P47S, P8S	P47S	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.107C>A (p.Pro36Gln)	P36Q	P36Q	Benign	
+skipped	NM_000546.6(TP53):c.105G>C (p.Leu35Phe)	L35F	L35F	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.94C>G (p.Leu32Val)	L32V	L32V	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.85A>G (p.Asn29Asp)	N29D	N29D	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.62A>C (p.Asp21Ala)	D21A	D21A	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.28G>C (p.Val10Leu)	V10L	V10L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.28G>A (p.Val10Ile)	V10I	V10I	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
+created	NM_000546.6(TP53):c.23C>G (p.Pro8Arg)	P8R	P8R	Likely_benign	
+created	NM_000546.6(TP53):c.23C>T (p.Pro8Leu)	P8L	P8L	Likely_benign	
+skipped	NM_000546.6(TP53):c.21T>G (p.Asp7Glu)	D7E	D7E	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.11C>A (p.Pro4Gln)	P4Q	P4Q	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_000546.6(TP53):c.11C>T (p.Pro4Leu)	P4L	P4L	Likely_benign	Reference AA mismatch or position out of range (check isoform/numbering)
+skipped	NM_001143992.2(WRAP53):c.202C>G (p.Arg68Gly)	R68G	R68G	Benign	Reference AA mismatch or position out of range (check isoform/numbering)
