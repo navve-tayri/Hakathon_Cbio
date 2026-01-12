@@ -1,10 +1,10 @@
 import csv
 import re
+from pathlib import Path
 
 # =========================
-# Reference WT sequence
+# WT reference (as provided)
 # =========================
-
 WT_SEQUENCE = """
 MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGP
 DEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAK
@@ -15,105 +15,119 @@ PGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPG
 GSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD
 """.replace("\n", "").strip()
 
+# אם את רוצה בדיוק כמו בדוגמה (להתחיל מ-MDDLML...), השאירי True
+TRIM_TO_MDDL = True
+TRIM_ANCHOR = "MDDLMLSPDDIEQWFTEDPGP"
+
+# כותרת WT בדיוק כמו שהדגמת
+WT_HEADER = ">TP53_WT|ref_from=tr|H2EHT1|H2EHT1_HUMAN Cellular tumor antigen p53 OS=Homo sapiens OX=9606 GN=TP53 PE=2 SV=1"
+
+# =========================
+# IO
+# =========================
+INPUT_FILE = Path("clinvar_tp53.txt")   # הקובץ שצירפת
+OUTPUT_FASTA = Path("tp53_clinvar_labeled.fasta")
+
 # =========================
 # Helpers
 # =========================
+MISSENSE_TOKEN_RE = re.compile(r"\b([A-Z])(\d+)([A-Z])\b")
 
-AA3_TO_AA1 = {
-    "Ala": "A", "Arg": "R", "Asn": "N", "Asp": "D", "Cys": "C",
-    "Glu": "E", "Gln": "Q", "Gly": "G", "His": "H", "Ile": "I",
-    "Leu": "L", "Lys": "K", "Met": "M", "Phe": "F", "Pro": "P",
-    "Ser": "S", "Thr": "T", "Trp": "W", "Tyr": "Y", "Val": "V",
-    "Ter": "*"
-}
+def normalize_ref_sequence(wt: str) -> str:
+    if not TRIM_TO_MDDL:
+        return wt
+    idx = wt.find(TRIM_ANCHOR)
+    if idx == -1:
+        raise ValueError(f"TRIM_ANCHOR not found in WT_SEQUENCE: {TRIM_ANCHOR}")
+    return wt[idx:]  # מתחיל מ-MDDL...
 
-def parse_protein_change(name_field):
+def wrap_fasta(seq: str, width: int = 60) -> str:
+    return "\n".join(seq[i:i+width] for i in range(0, len(seq), width))
+
+def label_from_classification(classification: str) -> str:
+    # לדוגמה: "Likely benign" -> "Likely_benign"
+    return classification.strip().replace(" ", "_")
+
+def pick_best_missense_token(protein_change_field: str, ref_seq: str):
     """
-    Extract something like: p.Arg337His
-    Returns: (refAA, position, altAA) in 1-letter code
+    protein_change_field יכול להיות: "D234Y, D261Y, D393Y, D354Y"
+    נחזיר את הטוקן הראשון שמתאים גם לרפרנס (אות WT בעמדה = refAA).
+    אם אין התאמה, נחזיר את הראשון שמצאנו.
     """
-    m = re.search(r"p\.([A-Z][a-z]{2})(\d+)([A-Z][a-z]{2})", name_field)
-    if not m:
+    tokens = [t.strip() for t in protein_change_field.split(",")]
+    parsed = []
+    for t in tokens:
+        m = MISSENSE_TOKEN_RE.search(t)
+        if m:
+            refAA, pos, altAA = m.group(1), int(m.group(2)), m.group(3)
+            parsed.append((t, refAA, pos, altAA))
+
+    if not parsed:
         return None
 
-    ref3, pos, alt3 = m.groups()
-    if ref3 not in AA3_TO_AA1 or alt3 not in AA3_TO_AA1:
-        return None
+    # נסי למצוא טוקן שמתאים לרפרנס (בדיקת sanity)
+    for t, refAA, pos, altAA in parsed:
+        idx = pos - 1
+        if 0 <= idx < len(ref_seq) and ref_seq[idx] == refAA:
+            return t, refAA, pos, altAA
 
-    ref = AA3_TO_AA1[ref3]
-    alt = AA3_TO_AA1[alt3]
-    pos = int(pos)
+    # אחרת: קחי את הראשון
+    t, refAA, pos, altAA = parsed[0]
+    return t, refAA, pos, altAA
 
-    return ref, pos, alt
-
-def apply_mutation(wt_seq, ref, pos, alt):
-    """
-    pos is 1-based
-    """
+def apply_single_aa_substitution(ref_seq: str, pos: int, altAA: str) -> str:
     idx = pos - 1
-    if idx < 0 or idx >= len(wt_seq):
+    if not (0 <= idx < len(ref_seq)):
         return None
-
-    if wt_seq[idx] != ref:
-        # sanity check failed
-        # still allow, but warn
-        print(f"Warning: WT mismatch at {pos}: expected {ref}, found {wt_seq[idx]}")
-
-    return wt_seq[:idx] + alt + wt_seq[idx+1:]
-
-def classify_label(classification):
-    c = classification.lower()
-
-    if "pathogenic" in c:
-        return "PATHOGENIC"
-    if "benign" in c:
-        return "BENIGN"
-    return None  # unknown / skip
+    return ref_seq[:idx] + altAA + ref_seq[idx+1:]
 
 # =========================
-# Main conversion
+# Main
 # =========================
+ref_seq = normalize_ref_sequence(WT_SEQUENCE)
 
-INPUT_FILE = "clinvar_tp53.txt"   # תשני לשם הקובץ שלך
-OUTPUT_FASTA = "tp53_variants.fasta"
+written = 0
+skipped = 0
 
-count_written = 0
-count_skipped = 0
+with INPUT_FILE.open(newline="", encoding="utf-8") as f_in, OUTPUT_FASTA.open("w", encoding="utf-8") as f_out:
+    reader = csv.DictReader(f_in, delimiter="\t")
 
-with open(INPUT_FILE, newline="", encoding="utf-8") as f, open(OUTPUT_FASTA, "w") as out:
-    reader = csv.DictReader(f, delimiter="\t")
+    # 1) כתיבת WT ראשון
+    f_out.write(WT_HEADER + "\n")
+    f_out.write(wrap_fasta(ref_seq) + "\n")
 
+    # 2) כתיבת וריאנטים
     for row in reader:
-        name = row["Name"]
-        classification = row["Germline classification"]
+        classification = (row.get("Germline classification") or "").strip()
+        protein_change_field = (row.get("Protein change") or "").strip()
 
-        label = classify_label(classification)
-        if label is None:
-            count_skipped += 1
+        if not classification or not protein_change_field:
+            skipped += 1
             continue
 
-        parsed = parse_protein_change(name)
-        if parsed is None:
-            count_skipped += 1
+        pick = pick_best_missense_token(protein_change_field, ref_seq)
+        if pick is None:
+            skipped += 1
             continue
 
-        ref, pos, alt = parsed
+        token, refAA, pos, altAA = pick
 
-        mutant_seq = apply_mutation(WT_SEQUENCE, ref, pos, alt)
-        if mutant_seq is None:
-            count_skipped += 1
+        # מייצר רצף מוטנטי
+        mutant = apply_single_aa_substitution(ref_seq, pos, altAA)
+        if mutant is None:
+            skipped += 1
             continue
 
-        header = f">TP53_p.{ref}{pos}{alt}|label={label}"
-        out.write(header + "\n")
+        # כותרת בפורמט שביקשת: TP53_F346L|label=Likely_benign
+        label = label_from_classification(classification)
+        header = f">TP53_{token}|label={label}"
 
-        # write sequence in 60 char lines
-        for i in range(0, len(mutant_seq), 60):
-            out.write(mutant_seq[i:i+60] + "\n")
+        f_out.write(header + "\n")
+        f_out.write(wrap_fasta(mutant) + "\n")
 
-        count_written += 1
+        written += 1
 
 print("Done.")
-print("Written sequences:", count_written)
-print("Skipped rows:", count_skipped)
-print("Output file:", OUTPUT_FASTA)
+print("Output:", OUTPUT_FASTA.resolve())
+print("Variants written:", written)
+print("Rows skipped:", skipped)
