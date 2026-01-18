@@ -314,14 +314,14 @@ def plot_score_distributions(df, threshold):
     plt.xlabel("Delta Score (Higher = Worse)")
     plt.legend()
     plt.grid(True, alpha=0.2)
-    plt.savefig("score_distribution.png", dpi=300)
-    print(" Distribution plot saved to 'score_distribution.png'")
+    plt.savefig("score_distribution_big_data.png", dpi=300)
+    print(" Distribution plot saved to 'score_distribution_big_data.png'")
 
 
 # --- 4. MAIN EXECUTION ---
 if __name__ == "__main__":
     print("--- Step 1: Building Profile HMM ---")
-    aln = AlignIO.read("tp53_msa.fasta", "fasta")
+    aln = AlignIO.read("../Data/tp53_msa.fasta", "fasta")
     alignment = [str(rec.seq).upper() for rec in aln]
     AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWYX")
     alphabet = {aa: i for i, aa in enumerate(AMINO_ACIDS)}
@@ -352,7 +352,7 @@ if __name__ == "__main__":
 
     # Split Data
     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
-    split_idx = int(len(df) * 0.50)
+    split_idx = int(len(df) * 0.60)
     df_train = df.iloc[:split_idx]
     df_test = df.iloc[split_idx:]
 
@@ -389,4 +389,4 @@ if __name__ == "__main__":
     plot_score_distributions(df_test, best_thr)
 
     print("\n--- Step 5: Generating Plots ---")
-    plot_roc_curve(df_test.label_bin.values, df_test.delta_score.values)
+   # plot_roc_curve(df_test.label_bin.values, df_test.delta_score.values)
