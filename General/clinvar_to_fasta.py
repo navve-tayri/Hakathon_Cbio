@@ -25,8 +25,8 @@ WT_HEADER = ">TP53_WT|ref_from=tr|H2EHT1|H2EHT1_HUMAN Cellular tumor antigen p53
 # =========================
 # IO
 # =========================
-INPUT_FILE = Path("clinvar_tp53.txt")   # הקובץ שצירפת
-OUTPUT_FASTA = Path("tp53_clinvar_labeled.fasta")
+INPUT_FILE = Path("../Data/clinvar_tp53.txt")   # הקובץ שצירפת
+OUTPUT_FASTA = Path("../Data/tp53_clinvar_labeled.fasta")
 
 # =========================
 # Helpers

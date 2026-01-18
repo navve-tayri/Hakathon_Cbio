@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # --- Constants ---
-MSA_FILE = "../tp53_msa.fasta"
+MSA_FILE = "../Data/tp53_msa.fasta"
 AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWY")
 AA_TO_INDEX = {aa: i for i, aa in enumerate(AMINO_ACIDS)}
 

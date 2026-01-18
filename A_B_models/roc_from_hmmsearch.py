@@ -17,7 +17,7 @@ def read_tblout(path: str) -> pd.DataFrame:
             if not line.strip() or line.startswith("#"):
                 continue
             # tblout is whitespace-separated, with fixed columns.
-            # target name is col0, bitscore is col5, evalue is col4 (for full sequence)
+            # target name is col0, bitscore is col5, evalue is col4
             parts = line.split()
             if len(parts) < 6:
                 continue
@@ -36,7 +36,7 @@ def read_manifest(path: str) -> pd.DataFrame:
     # Keep only created variants (these are the ones present in mutants.fasta)
     df = df[df["status"] == "created"].copy()
 
-    # Normalize label → binary
+    # Normalize label -> binary
     # Positive class = pathogenic-like
     def to_y(lab: str):
         if pd.isna(lab):

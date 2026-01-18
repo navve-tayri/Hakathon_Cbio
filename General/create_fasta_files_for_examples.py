@@ -49,14 +49,14 @@ def process_clinvar_data(input_file):
 
     # קובץ 2: 8 דוגמאות עם לייבלים (לצורך המצגת והשוואה)
     if example_labeled_records:
-        SeqIO.write(example_labeled_records, "tp53_clinvar_8_examples_with_labels.fasta", "fasta")
+        SeqIO.write(example_labeled_records, "../Data/tp53_clinvar_8_examples_with_labels.fasta", "fasta")
         print(f"✅ נוצר קובץ: 'tp53_clinvar_8_examples_with_labels.fasta' (8 רצפים עם לייבל)")
 
     # קובץ 3: שאר הנתונים למודל (עם לייבלים)
     if remaining_records:
-        SeqIO.write(remaining_records, "tp53_clinvar_data_for_model_without_8.fasta", "fasta")
+        SeqIO.write(remaining_records, "../Data/tp53_clinvar_data_for_model_without_8.fasta", "fasta")
         print(f"✅ נוצר קובץ: 'tp53_clinvar_data_for_model_without_8.fasta' ({len(remaining_records)} רצפים)")
 
 
 # הרצה על הקובץ שלך
-process_clinvar_data("tp53_clinvar_labeled.fasta")
+process_clinvar_data("../Data/tp53_clinvar_labeled.fasta")

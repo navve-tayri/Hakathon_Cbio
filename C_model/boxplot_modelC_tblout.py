@@ -90,9 +90,9 @@ def main():
     labels = ["Benign-like", "Pathogenic-like"]
 
     plt.figure()
-    plt.boxplot(data, labels=labels, showfliers=True)
+    plt.boxplot(data, labels=labels, showfliers=False)
 
-    # overlay jitter points (same style as your boxplot_tblout.py)
+    # overlay jitter points for visibility
     rng = np.random.default_rng(0)
     for i, arr in enumerate(data, start=1):
         x = rng.normal(loc=i, scale=0.04, size=len(arr))

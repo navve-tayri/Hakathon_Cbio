@@ -11,7 +11,7 @@ from sklearn.metrics import roc_curve, auc
 # --- קבצים ---
 # MSA_FILE = "tp53_msa.fasta"
 MSA_FILE = "tp53_30_msa.fasta"
-CLINVAR_FILE = "../clinvar_tp53.txt"  # וודאי שזה השם הנכון
+CLINVAR_FILE = "../Data/clinvar_tp53.txt"  # וודאי שזה השם הנכון
 
 # --- הגדרות ---
 AMINO_ACIDS = list("ACDEFGHIKLMNPQRSTVWY")

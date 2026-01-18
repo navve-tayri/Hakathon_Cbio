@@ -256,7 +256,7 @@ def load_mutant_fasta_with_ids(fasta_path):
 # ---------------------------------------------------------
 # NEW: Function to save Pseudo-HMMER .tbl
 # ---------------------------------------------------------
-def save_to_tbl(df, output_file="scores_C.tbl"):
+def save_to_tbl(df, output_file="scores_C_big_data.tbl"):
     """
     Saves the results in a whitespace-delimited format compatible with 'roc_from_tbl.py'.
     Format requirements for the parser:
@@ -281,7 +281,7 @@ def save_to_tbl(df, output_file="scores_C.tbl"):
             # Using f-string alignment (<30) to make it look neat, though split() handles any whitespace.
             f.write(f"{target:<30} -          -                    -          -       {score:.4f}   -\n")
 
-    print(f"✅ Saved .tbl file to '{output_file}'.")
+    print(f" Saved .tbl file to '{output_file}'.")
     print("   You can now run: python roc_from_tbl.py --tbl scores_C.tbl")
 
 
@@ -289,7 +289,7 @@ def save_to_tbl(df, output_file="scores_C.tbl"):
 
 def evaluation_mode():
     print("--- Step 1: Building Profile HMM ---")
-    states, transition, emission, alphabet = build_model_from_msa("tp53_msa.fasta", theta=0.35)
+    states, transition, emission, alphabet = build_model_from_msa("../Data/tp53_msa.fasta", theta=0.35)
     print(f"HMM Model built ({len(states)} states).")
 
     print("\n--- Step 2: Calibrating with Wild Type ---")
@@ -298,7 +298,8 @@ def evaluation_mode():
 
     print("\n--- Step 3: Loading & Scoring Mutants ---")
     # UPDATED: Using the new loader that returns IDs
-    ids, X_seqs, y_labels = load_mutant_fasta_with_ids("tp53_clinvar_labeled.fasta")
+    # ids, X_seqs, y_labels = load_mutant_fasta_with_ids("../Data/tp53_clinvar_labeled.fasta")
+    ids, X_seqs, y_labels = load_mutant_fasta_with_ids("../Data/tp53_s1_posneg_labeled.fasta")
 
     df = pd.DataFrame({
         "id_with_label": ids,
@@ -311,7 +312,8 @@ def evaluation_mode():
     df["delta_score"] = wt_score - df["raw_score"]
 
     # --- NEW STEP: Save the TBL file for your external script ---
-    save_to_tbl(df, "scores_C.tbl")
+    # save_to_tbl(df, "scores_C_clinvar.tbl")
+    save_to_tbl(df, "scores_C_big_data.tbl")
     # ------------------------------------------------------------
 
     print(f"\nMean Healthy Delta: {np.mean(df[df.label_bin == 0].delta_score):.4f}")
@@ -325,7 +327,7 @@ def evaluation_mode():
 def inference_mode(fasta_path: str):
     # This remains largely the same, but you could add tbl export here too if needed.
     print("--- Step 1: Building Profile HMM ---")
-    states, transition, emission, alphabet = build_model_from_msa("tp53_msa.fasta", theta=0.35)
+    states, transition, emission, alphabet = build_model_from_msa("../Data/tp53_msa.fasta", theta=0.35)
     wt_score = score_sequence_viterbi(states, transition, emission, alphabet, WT_SEQUENCE)
 
     # ... (Rest of inference logic) ...

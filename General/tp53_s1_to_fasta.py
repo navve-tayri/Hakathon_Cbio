@@ -16,14 +16,14 @@ GSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD
 """.replace("\n", "").replace(" ", "").strip()
 
 # =========================
-# Output formatting - start from MDDLML... (display only)
+# Output formatting settings
 # =========================
 TRIM_ANCHOR = "MDDLMLSPDDIEQWFTEDPGP"
 ANCHOR_IDX = WT_SEQUENCE_FULL.find(TRIM_ANCHOR)
 if ANCHOR_IDX == -1:
     raise ValueError("TRIM_ANCHOR not found in WT sequence")
 
-WT_SEQUENCE_OUT = WT_SEQUENCE_FULL[ANCHOR_IDX:]  # what you want to PRINT in FASTA
+WT_SEQUENCE_OUT = WT_SEQUENCE_FULL[ANCHOR_IDX:]  # trimmed for output display only
 
 WT_HEADER = ">TP53_WT|ref_from=tr|H2EHT1|H2EHT1_HUMAN Cellular tumor antigen p53 OS=Homo sapiens OX=9606 GN=TP53 PE=2 SV=1"
 
@@ -69,8 +69,8 @@ def to_token(prot_variant: str) -> str:
 # =========================
 # Main: build FASTA from Excel
 # =========================
-EXCEL_PATH = Path("supplementary_table_s1_bbab524.xlsx")
-OUTPUT_FASTA = Path("tp53_s1_posneg_labeled.fasta")
+EXCEL_PATH = Path("../Data/supplementary_table_s1_bbab524.xlsx")
+OUTPUT_FASTA = Path("../Data/tp53_s1_posneg_labeled.fasta")
 
 # Adjust these if the sheet names differ in your file
 POS_SHEET = "S1A. Positive Set"

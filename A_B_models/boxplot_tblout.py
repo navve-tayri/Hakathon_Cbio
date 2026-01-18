@@ -39,7 +39,7 @@ def binarize_label(label: str):
     """Return 0 for benign-like, 1 for pathogenic-like, else None."""
     if label is None:
         return None
-    # Your labels look like: Benign, Likely_benign, Pathogenic, Pathogenic_or_Likely_pathogenic
+    # labels: Benign, Likely_benign, Pathogenic, Pathogenic_or_Likely_pathogenic
     if "Benign" in label:
         return 0
     if "Pathogenic" in label:
@@ -82,7 +82,7 @@ def main():
     labels = ["Benign-like", "Pathogenic-like"]
 
     plt.figure()
-    plt.boxplot(data, labels=labels, showfliers=True)
+    plt.boxplot(data, labels=labels, showfliers=False)
 
     # Overlay jittered points (to show ties / discreteness)
     rng = np.random.default_rng(0)

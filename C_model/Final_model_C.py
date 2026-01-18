@@ -23,6 +23,9 @@ GSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD
 # --- 2. HMM CORE FUNCTIONS ---
 
 def profileHMM(alignment, alphabet, theta):
+    """
+    Builds a profile HMM from a multiple sequence alignment.
+    """
     def get_seed_alignment(alignment, theta, alphabet):
         k = len(alignment[0])
         a = len(alphabet.keys())
@@ -89,6 +92,9 @@ def profileHMM(alignment, alphabet, theta):
 
 
 def _state_index(j: int, kind: str) -> int:
+    """
+    Returns the index of the state of type `kind` at position `j`.
+    """
     base = 2 + 3 * (j - 1)
     if kind == "M": return base
     if kind == "D": return base + 1
@@ -97,6 +103,9 @@ def _state_index(j: int, kind: str) -> int:
 
 
 def viterbi_profile_hmm(states, T, E, alphabet, sequence):
+    """
+    Viterbi algorithm for profile HMMs.
+    """
     seq = sequence.upper()
     L = len(seq)
     k = (len(states) - 3) // 3
@@ -113,6 +122,9 @@ def viterbi_profile_hmm(states, T, E, alphabet, sequence):
     I0_idx = 1
 
     def emit_log(state_idx, ch):
+        """
+        Emission log-probability for state `state_idx` emitting character `ch`.
+        """
         if ch not in alphabet: return np.log(eps)
         return Elog[state_idx, alphabet[ch]]
 
@@ -174,6 +186,9 @@ def clean_protein_sequence(seq: str, alphabet: dict) -> str:
 
 
 def score_sequence_viterbi(states, T, E, alphabet, seq: str) -> float:
+    """
+    Scores a protein sequence using the Viterbi algorithm on the profile HMM.
+    """
     seq_clean = clean_protein_sequence(seq, alphabet)
     if len(seq_clean) == 0: return float("-inf")
     best_ll, _ = viterbi_profile_hmm(states, T, E, alphabet, seq_clean)
@@ -183,6 +198,9 @@ def score_sequence_viterbi(states, T, E, alphabet, seq: str) -> float:
 # --- 3. EVALUATION HELPERS ---
 
 def choose_threshold(scores, labels, method="youden"):
+    """
+    Chooses an optimal threshold based on the specified method.
+    """
     scores = np.asarray(scores);
     labels = np.asarray(labels)
     if method == "means":
@@ -208,6 +226,9 @@ def choose_threshold(scores, labels, method="youden"):
 
 # --- YOUR REQUESTED FUNCTION IS HERE ---
 def evaluate_threshold(scores: np.ndarray, labels: np.ndarray, threshold: float) -> dict:
+    """
+    Evaluates classification metrics at a given threshold.
+    """
     scores = np.asarray(scores, dtype=float)
     labels = np.asarray(labels, dtype=int)
     pred = (scores >= threshold).astype(int)
@@ -235,6 +256,9 @@ def evaluate_threshold(scores: np.ndarray, labels: np.ndarray, threshold: float)
 # ---------------------------------------
 
 def load_mutant_fasta(fasta_path):
+    """
+    Loads mutant sequences and their labels from a FASTA file.
+    """
     X, y = [], []
     for rec in SeqIO.parse(fasta_path, "fasta"):
         if "|label=" not in rec.description: continue
@@ -250,6 +274,9 @@ def load_mutant_fasta(fasta_path):
 
 
 def plot_roc_curve(y_true, y_scores, output_file="roc_curve.png"):
+    """
+    Plots the ROC curve and saves it to a file.
+    """
     fpr, tpr, _ = roc_curve(y_true, y_scores)
     roc_auc = auc(fpr, tpr)
     plt.figure(figsize=(8, 6))
@@ -264,13 +291,16 @@ def plot_roc_curve(y_true, y_scores, output_file="roc_curve.png"):
     plt.grid(True, alpha=0.3)
     plt.savefig(output_file, dpi=300);
     plt.close()
-    print(f"✅ ROC Curve saved to '{output_file}' (AUC: {roc_auc:.4f})")
+    print(f" ROC Curve saved to '{output_file}' (AUC: {roc_auc:.4f})")
 
 
 import seaborn as sns
 
 
 def plot_score_distributions(df, threshold):
+    """
+    Plots the distribution of delta scores for healthy vs sick samples.
+    """
     plt.figure(figsize=(10, 6))
 
     # Plot Healthy (0) in Green and Sick (1) in Red
@@ -285,7 +315,7 @@ def plot_score_distributions(df, threshold):
     plt.legend()
     plt.grid(True, alpha=0.2)
     plt.savefig("score_distribution.png", dpi=300)
-    print("✅ Distribution plot saved to 'score_distribution.png'")
+    print(" Distribution plot saved to 'score_distribution.png'")
 
 
 # --- 4. MAIN EXECUTION ---
@@ -303,7 +333,7 @@ if __name__ == "__main__":
     print(f"WT (UniProt P04637) Score: {wt_score:.4f}")
 
     print("\n--- Step 3: Loading & Scoring Mutants ---")
-    X_seqs, y_labels = load_mutant_fasta("tp53_s1_posneg_labeled.fasta")
+    X_seqs, y_labels = load_mutant_fasta("../Data/tp53_s1_posneg_labeled.fasta")
     df = pd.DataFrame({"sequence": X_seqs, "label_bin": y_labels})
 
     # Calculate scores for all
